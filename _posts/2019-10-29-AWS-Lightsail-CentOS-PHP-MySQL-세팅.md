@@ -11,16 +11,16 @@ comments: true
 
 
 ### 키페어를 이용해 SSH 접속
-
-
+  
+  
 ~~~
 sudo ssh -i /키페어 위치.pem centos@xx.xx.xxx.xxx
 ~~~
-
-
+  
+  
 ### PHP 5.6 설치
-
-
+  
+  
 ~~~
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
 yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm  
@@ -28,10 +28,10 @@ yum install yum-utils
 yum-config-manager --enable remi-php56  
 yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo  
 ~~~
-
-
+  
+  
 ### PHP 설정 변경 (php.ini)
-
+  
   
   - 단축 태그 on : short_tag : On  
 ~~~
@@ -41,11 +41,11 @@ yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip ph
     
   - 타임존 설정  : data.timezone = Asia/Seoul
   - 세션 설정 : session.auto_start = 1
-  
-  
+    
+    
 ### MySQL 설치
-  
-  
+    
+    
 ~~~
 yum -y install http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm  
 yum -y install mysql-community-server  
