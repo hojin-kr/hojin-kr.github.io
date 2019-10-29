@@ -106,6 +106,8 @@ url-pretty: "hojin-kr.github.io"  # eg. "deanattali.com/beautiful-jekyll"
 # Google Tag Manager ID
 #gtm: ""
 
+google_fonts: "Naum+Gothic:400,700"
+
 # Matomo (aka Piwik) Web statistics
 # Uncomment the following section to enable Matomo. The opt-out parameter controls
 # whether or not you want to allow users to opt out of tracking.
