@@ -86,8 +86,10 @@ webpack.config.json에서 entry: 를 변경하여 codeigniter에서 js를 관리
 
 ~~~
 
-### /node_modules/hooper/dist/hooper.css Unexpected token (1:0)
-You may need an appropriate loader to handle this file type.
+### 스타일 로드 에러
+
+{: .box-error}
+/node_modules/hooper/dist/hooper.css Unexpected token (1:0) You may need an appropriate loader to handle this file type.
 
 webpack에서 css 를 로드할 수 있도록 모듈 추가
 
