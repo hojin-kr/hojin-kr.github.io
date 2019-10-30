@@ -1,0 +1,71 @@
+Vue-Webpack-json-설정
+
+package.json
+
+~~~
+{
+  "name": "codeigniter-webpack",
+  "version": "1.0.0",
+  "description": "webpack project for codeigniter",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build-dev": "webpack --mode development"
+  },
+  "author": "janghojin",
+  "license": "ISC",
+  "devDependencies": {
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "dependencies": {
+    "css-loader": "^3.2.0",
+    "hooper": "^0.3.4",
+    "style-loader": "^1.0.0",
+    "vue": "^2.6.10"
+  }
+}
+~~~
+
+webpack.config.js
+
+~~~
+const { VueLoaderPlugin } = require('vue-loader');
+
+module.exports = {
+  entry: {
+    '../../js/vue/rentdreamVue': './src/main.js'
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }
+    ]
+  },
+
+  resolve: {
+    alias: {
+      'vue$':'vue/dist/vue.esm.js'
+    }
+  },
+
+  plugins: [
+    new VueLoaderPlugin()
+  ]
+}
+~~~
+
+
+CodeIgniter 에 wepack + vue 
+directory
+[img](https://files.slack.com/files-pri/TCFHT0KSN-FPXPTK7EG/image.png)
