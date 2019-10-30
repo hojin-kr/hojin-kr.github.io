@@ -91,20 +91,17 @@ webpack.config.json에서 entry: 를 변경하여 codeigniter에서 js를 관리
 
 ### 스타일 로드 에러
 
-{: .box-error}
-/node_modules/hooper/dist/hooper.css Unexpected token (1:0) You may need an appropriate loader to handle this file type.
-
-'''
-npm install style-loader
-'''
-로 패키지를 설치하였지만 다음과 css 를 해석하지 못한다는 에러가 표시된다면 webpack.config.json, webpack 설정 파일을 확인합니다.
-
-webpack에서 css 를 로드할 수 있도록 모듈 추가
-
 ~~~
 npm install style-loader
 npm install css-loader
 ~~~
+  
+{: .box-error}
+/node_modules/hooper/dist/hooper.css Unexpected token (1:0) You may need an appropriate loader to handle this file type.
+
+npm을 이용해 패키지를 설치하였지만 해당 기능과 관련된 에러가 표시되며 빌드되지 않느다면 webpack.config.json, webpack 설정 파일을 확인합니다.
+
+webpack에서 css 를 로드할 수 있도록 모듈 추가
 
 ~~~
 //webpack.config.json
@@ -113,4 +110,5 @@ npm install css-loader
       use: ['style-loader', 'css-loader']
     }
 ~~~
-
+  
+  
