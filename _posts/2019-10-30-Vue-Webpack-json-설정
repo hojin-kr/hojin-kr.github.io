@@ -73,4 +73,15 @@ module.exports = {
 
 
 #### CodeIgniter 환경 내부에 적용 wepack + vue 
+
 ![directory](https://trello-attachments.s3.amazonaws.com/5db8f4ec38c7480da1157f2f/344x170/6945def226a7599c32d1921049a85ed6/image.png)
+
+webpack.config.json에서 entry: 를 변경하여 codeigniter에서 js를 관리하는 폴더로 빌드 파일을 생성하도록 수정하였음
+
+~~~
+/+
+  entry: {
+    '../../js/vue/buildVue': './src/main.js'
+  },
+
+~~~
