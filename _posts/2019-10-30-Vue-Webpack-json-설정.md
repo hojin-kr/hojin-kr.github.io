@@ -1,10 +1,10 @@
----
+---  
 layout: post
 title: npm vue webpack json 설정
 gh-repo: daattali/beautiful-jekyll
 tags: [npm, vue, node, webpack]
 comments: true
----
+---  
 
 ### package.json
 
