@@ -1,6 +1,12 @@
-Vue-Webpack-json-설정
+---
+layout: post
+title: npm vue webpack json 설정
+gh-repo: daattali/beautiful-jekyll
+tags: [npm, vue, node, webpack]
+comments: true
+---
 
-package.json
+### package.json
 
 ~~~
 {
@@ -30,14 +36,14 @@ package.json
 }
 ~~~
 
-webpack.config.js
+### webpack.config.js
 
 ~~~
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   entry: {
-    '../../js/vue/rentdreamVue': './src/main.js'
+    '../../js/vue/buildVue': './src/main.js'
   },
 
   module: {
@@ -66,6 +72,5 @@ module.exports = {
 ~~~
 
 
-CodeIgniter 에 wepack + vue 
-directory
-[img](https://files.slack.com/files-pri/TCFHT0KSN-FPXPTK7EG/image.png)
+#### CodeIgniter 환경 내부에 적용 wepack + vue 
+![directory](https://trello-attachments.s3.amazonaws.com/5db8f4ec38c7480da1157f2f/344x170/6945def226a7599c32d1921049a85ed6/image.png)
