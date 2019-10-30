@@ -7,6 +7,7 @@ comments: true
 ---  
 
 ### package.json
+package.json은 해당 앱의 빌드 설정 및 의존성을 관리합니다. npm install 을 사용하여 새로운 패키지를 설치하면 package.json에 추가되며 이후에 다른 환경에서 동일 패키지 환경을 구성할 수 있습니다.
 
 ~~~
 {
@@ -36,7 +37,9 @@ comments: true
 }
 ~~~
 
+
 ### webpack.config.js
+빌드 될 파일의 시작지점, webpack에서 사용할 모듈을 정의합니다. npm install로 특정 패키지를 설치하더라도 mudile의 rules을 확인하고 추가해주어야합니다. 주로 발생하는 에러로는 xxxx.css Unexpected token 과 같이 css 파일을 webpack에서 해석하지 못하여 빌드를 실패하는 경우가 있습니다.
 
 ~~~
 const { VueLoaderPlugin } = require('vue-loader');
@@ -90,6 +93,11 @@ webpack.config.json에서 entry: 를 변경하여 codeigniter에서 js를 관리
 
 {: .box-error}
 /node_modules/hooper/dist/hooper.css Unexpected token (1:0) You may need an appropriate loader to handle this file type.
+
+'''
+npm install style-loader
+'''
+로 패키지를 설치하였지만 다음과 css 를 해석하지 못한다는 에러가 표시된다면 webpack.config.json, webpack 설정 파일을 확인합니다.
 
 webpack에서 css 를 로드할 수 있도록 모듈 추가
 
