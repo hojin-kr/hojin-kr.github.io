@@ -50,7 +50,8 @@ Elasticsearch를 실행한 상태에서 Kibana를 실행하면 상호작용하�
 http://localhost:5601/
 ~~~
 
-
+<center><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dc3793d8afbad222c166461/ba9dfb3b05c77fb732fad6daa8000f89/image.png" width="80%"</center>
+Sample Data로 띄운 Kibana 환경
 
 
 
