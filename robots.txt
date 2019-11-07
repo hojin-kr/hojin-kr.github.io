@@ -1,2 +1,2 @@
 User-agent: *
-Allow: /_posts
+Allow: /_posts/
