@@ -67,5 +67,27 @@ brew 로 설치한 filebeat의 설정파일 위치는 다음과 같습니다.
 
 filebeat.yml을 수정하여 ElasticSearch와 연결하여 Kibana를 통해 데이터를 확인해봅시다.
 
+~~~
+138 #================================ Outputs =====================================
+139 
+140 # Configure what output to use when sending the data collected by the beat.
+141 
+142 #-------------------------- Elasticsearch output ------------------------------
+143 output.elasticsearch:
+144   # Array of hosts to connect to.
+145   hosts: ["localhost:9200"]
+146 
+147   # Optional protocol and basic auth credentials.
+148   protocol: "http"
+149   username: "elastic"
+150   password: "changeme"
+~~~
+filebeat를 실행합니다.
+~~~
+filebeat -e
+~~~
+Kibana로 돌아와서 Discover를 확인하면 로그 데이터가 들어오는것을 확인할 수 있습니다. 기본 Filebeat 설정은 var/logs/*.log 으로 현재 맥에서 관리하는 모든 로그를 가져오게 됩니다.
+<center><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dc3793d8afbad222c166461/6c3e05719a3179521ea357f50b0f8e36/image.png" width="80%;"></center>
+
 
 
