@@ -53,5 +53,19 @@ http://localhost:5601/
 <center><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dc3793d8afbad222c166461/ba9dfb3b05c77fb732fad6daa8000f89/image.png" width="80%;"></center>
 Sample Data로 띄운 Kibana 환경
 
+# Filebeat 연결해서 데이터 띄우기
+Filebeat로 var/logs에 남는 모든 log를 수집해 ElasticSearch와 연결하여 Kibana를 통해 데이터를 확인해봅시다.
+ 
+Filebeat 설치
+~~~
+brew install filebeat
+~~~
+brew 로 설치한 filebeat의 설정파일 위치는 다음과 같습니다.
+~~~
+/usr/local/etc/filebeat 
+~~~
+
+filebeat.yml을 수정하여 ElasticSearch와 연결하여 Kibana를 통해 데이터를 확인해봅시다.
+
 
 
