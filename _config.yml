@@ -1,10 +1,10 @@
 # --- General options --- #
 
 # Name of website
-title: Make some money
+title: hojin_dev
 
 # Short description of your site
-description: Make some money
+description: hojin_dev
 
 # --- Local development options ---
 # If your website is hosted locally rather than on GitHub, then you need to uncomment the next two parameters to set the url and baseurl
