@@ -11,7 +11,7 @@ comments: true
 
 During manage Android WebView App I try Error Handle and Refresh
 
-<center><img width="50%" src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dd388de5c99101842e73c86/d73ec14de8e62a575c7b1d997c022acd/image.png" alt="img"></center>
+<center><img width="50%;" src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dd388de5c99101842e73c86/d73ec14de8e62a575c7b1d997c022acd/image.png" alt="img"></center>
 
 Using 'onRecevedError()' Handle WebView error. If detect error, WebView is loding local error page(in file://android_asset). 
 
