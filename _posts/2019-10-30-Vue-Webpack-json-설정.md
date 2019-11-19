@@ -7,7 +7,7 @@ comments: true
 ---  
 
 제가 관리하는 앱은 코드이그나이터 환경으로 구현되어있습니다. 
-새로 추가하는 기능에 대해서 Vue로 구현하기 위해서 (브랜디의 코드이그나이터에 뷰 도입하기)[http://labs.brandi.co.kr/2018/08/07/kangww.html]를 참고하여 작업하였습니다. 그 과정에서 최소한으로 작업한 Webpack, package 설정 파일을 공유합니다.
+새로 추가하는 기능에 대해서 Vue로 구현하기 위해서 [브랜디의 코드이그나이터에 뷰 도입하기](http://labs.brandi.co.kr/2018/08/07/kangww.html)를 참고하여 작업하였습니다. 그 과정에서 최소한으로 작업한 Webpack, package 설정 파일을 공유합니다.
 
 ### package.json
 package.json은 해당 앱의 빌드 설정 및 의존성을 관리합니다. npm install 을 사용하여 새로운 패키지를 설치하면 package.json에 추가되며 이후에 다른 환경에서 동일 패키지 환경을 구성할 수 있습니다.
