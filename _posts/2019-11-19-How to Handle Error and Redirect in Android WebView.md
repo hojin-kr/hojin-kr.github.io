@@ -7,13 +7,13 @@ comments: true
 ---
 
 
-# Android WebView Error Handle and Redirect
+# How to Handle Error and Redirect in Android WebView
 
-During manage Android WebView App I try Error Handle and Refresh
+I tried to handle an error and refresh it during managing the application, Android WebView.
 
 <center><img width="50%;" src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dd388de5c99101842e73c86/d73ec14de8e62a575c7b1d997c022acd/image.png" alt="img"></center>
 
-Using 'onRecevedError()' Handle WebView error. If detect error, WebView is loding local error page(in file://android_asset). 
+Using ‘onRecevedError()’ Handle WebView error If an error is detected, WebView is loding local error page(in file://android_asset).
 
 ~~~
 //MainActivity.java
@@ -35,7 +35,7 @@ Using 'onRecevedError()' Handle WebView error. If detect error, WebView is lodin
       ...
 ~~~
 
-This is a part of error.html file. I think maybe this is fake but is work. if user meet this page. can be using button(refesh) and this button sending to app main page.
+This is a part of error.html file. I think this is incorrect but it works anyway. If user meets this page, he can use the refresh button and it will send users to the main page of the app.
 
 ~~~
 <!-- app/src/main/assets/www/error.html  -->
