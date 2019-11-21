@@ -1,6 +1,6 @@
 ---  
 layout: post
-title: Android WebView Error Handle and and Refresh
+title: How to Handle Error and Redirect in Android WebView
 gh-repo: daattali/beautiful-jekyll
 tags: [android, webview, error]
 comments: true
