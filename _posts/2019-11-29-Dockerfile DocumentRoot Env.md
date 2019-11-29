@@ -80,6 +80,20 @@ CMD ["apache2-foreground"]
 ~~~
 https://hub.docker.com/r/aspendigital/codeigniter 소스 포크하여 사용하였습니다.   
 DocumentRoot 환경변수로 추가하고 php.ini sesseion.auto_start on 설정 추가한 Dockerfile  
-https://hub.docker.com/repository/docker/hojindev/codeigniter_hmvc
-
+https://hub.docker.com/repository/docker/hojindev/codeigniter_hmvc  
+  
+docker-compose.yml 파일에서 환경변수 접근 가능하도록 라인 추가
+~~~
+version: '2.2'
+services:
+  web:
+    image: hojindev/codeigniter_hmvc:latest
+    ports:
+      - "80:80"
+    volumes:
+      - $PWD:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT="/var/www/html/m"
+~~~
+  
 추가로 vurtual_host를 어떻게 구현해야할지 고민 + 아니면 실행할때 옵션으로 포트 구분해서 개발 서버는 사용
