@@ -9,7 +9,7 @@ comments: true
 # Dockerfile DocumentRoot Env
 
 도커 구성 중 DocumentRoot를 바꿔야 하는 경우가 생겼습니다.  
-현재 운영 중인 서비스가 코드이그나이터를 이용하여 다음과 같은 구조를 가지고 있습니다.
+현재 운영 중인 서비스가 코드이그나이터를 이용하여 다음과 같은 구조를 가지고 있습니다.  
 m.domain.kr -> app/m -> app/CI/application/m/  
 www.domain.kr -> app/www -> app/CI/application/www/  
 DocumentRoot는 app/m 을 향하면서 -v 옵션으로 링크하는 영역은 하나 뒤 영역인 app/을 잡아야합니다.  
