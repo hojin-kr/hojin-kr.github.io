@@ -1,4 +1,4 @@
----  
+---
 layout: post
 title: [버그리포트] Android App CalledFromWrongThreadException
 gh-repo: daattali/beautiful-jekyll
