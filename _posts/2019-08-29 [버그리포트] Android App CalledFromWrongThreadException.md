@@ -4,7 +4,8 @@ title: [버그리포트] Android App CalledFromWrongThreadException
 gh-repo: daattali/beautiful-jekyll
 tags: [android, bug, app]
 comments: true
----  
+---    
+
 
 # [버그리포트] Android App CalledFromWrongThreadException
 
