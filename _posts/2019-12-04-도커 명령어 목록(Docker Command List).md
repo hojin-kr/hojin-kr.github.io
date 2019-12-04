@@ -13,7 +13,7 @@ comments: true
 $ docker exec -it 7c172 /bin/bash
 ```
   
-실행중인 컨테이너 목록 (Running container list)  
+#### 실행중인 컨테이너 목록 (Running container list)  
 실행중인 컨테이너의 ID, IMAGE NAMES, COMMAND, CREAGED, STATUS, PORTS를 표시
 ```shell
 $ docker ps
