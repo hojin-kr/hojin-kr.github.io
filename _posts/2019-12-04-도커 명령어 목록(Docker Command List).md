@@ -1,8 +1,3 @@
-
-### 실행중인 컨테이너에서 bash 실행
-```shell
-$ docker exec -it 7c172 /bin/bash
-```
 ---  
 layout: post
 title: 도커 명령어 목록 (Docker Command List)
@@ -11,6 +6,12 @@ tags: [docker]
 comments: true
 ---  
 
+# 자주 사용하는 Docker 명령어 목록 
+
+### 실행중인 컨테이너에서 bash 실행
+```shell
+$ docker exec -it 7c172 /bin/bash
+```
 ### 실행중인 컨테이너 목록 (Running container list)
 실행중인 컨테이너의 ID, IMAGE NAMES, COMMAND, CREAGED, STATUS, PORTS를 표시
 ```shell
