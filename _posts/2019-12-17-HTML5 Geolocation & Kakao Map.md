@@ -8,8 +8,7 @@ comments: true
 
 position_set() 메소드를 호출하면 Geolocation 사용 가능여부 및 권한을 확인합니다.
 그리고 현재 위치를 지도의 가운데로 이동하고 좌표에 해당하는 주소를 출력합니다.
-
-~~~
+```javascript
     //현재 중심 좌표의 주소를 반환
     var callback = function (result, status) {
         if (status === daum.maps.services.Status.OK) {
@@ -45,4 +44,4 @@ position_set() 메소드를 호출하면 Geolocation 사용 가능여부 및 권
             resolve(location);
         });
     }
-~~~
+```
