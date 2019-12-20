@@ -76,4 +76,6 @@ const styles = StyleSheet.create({
 
 ![hello world](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/8ad6dc2a2fdc764c85b9f7323aeadaa0/image.png)
 
-위 샘플코드에서 <View><Text></Text></View>는 JSX 입니다. JavaScript에 포함된 XML 마크업 언어입니다. 마치 HTML 처럼 보이지만 웹의 <div> <span> 태그를 대신하는 React component입니다. <Text>는 React의 built-in component로 화면에 Text를 표시해줍니다. 그리고 <View>는 <div> 혹은 <span>과 같은 구역을 나누는 역활을 합니다.
+위 샘플코드에서  `<View><Text></Text></View>` 는 JSX 입니다. JavaScript에 포함된 XML 마크업 언어입니다. 마치 HTML 처럼 보이지만 웹의 `<div>` `<span>` 태그를 대신하는 React component입니다. `<Text>`는 React의 built-in component로 화면에 Text를 표시해줍니다. 그리고 `<View>`는 `<div>` 혹은 `<span>`과 같은 구역을 나누는 역활을 합니다.  
+  
+만약에 새로운 React Native app을 만든다면 수 많은 component를 만들게 될겁니다. 작성한 compoent를 표시하는데 필요한건 JSX를 반환하는 `render()` 함수를 호출하는것입니다. 
