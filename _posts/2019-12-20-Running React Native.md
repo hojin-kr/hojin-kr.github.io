@@ -114,7 +114,9 @@ const styles = StyleSheet.create({
 
 ~~~
 
-### Props use your custom components
+### Your own cmponents can also use props
+앞으로 다양한 composnet를 만들게됩니다. 당연하게도 새롭게 만들어낸 Component 사이에도 Props를 전달하고 받을 수 있습니다. Props의 전달은 기본 Compoent와 마찬가지로 JSX를 통해 전달하며 받을 때는 render 함수안에서 `this.props`를 사용합니다.  
+
 
 
 
