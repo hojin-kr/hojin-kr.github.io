@@ -588,3 +588,62 @@ export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component
 React Native는 데이터 리스트를 표현하기 위해 `FlatList`와 `SectionList`를 제공합니다.  
 
 FlatList는 ScrollView와는 다르게 현재 화면에 표시되는 요소만을 render 합니다. 또한 data와 renderItem 두 props를 가집니다. data는 리스트의 값 목록이고 renderItem은 각각의 값이 render될 component 형식을 나타냅니다.
+
+***
+
+## Networking
+
+~~~javascript
+import React from 'react';
+import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
+
+export default class FetchExample extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state ={ isLoading: true}
+  }
+
+  componentDidMount(){
+    return fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({
+          isLoading: false,
+          dataSource: responseJson.movies,
+        }, function(){
+
+        });
+
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+
+
+  render(){
+
+    if(this.state.isLoading){
+      return(
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>
+        </View>
+      )
+    }
+
+    return(
+      <View style={{flex: 1, paddingTop:20}}>
+        <FlatList
+          data={this.state.dataSource}
+          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
+          keyExtractor={({id}, index) => id}
+        />
+      </View>
+    );
+  }
+}
+
+~~~
