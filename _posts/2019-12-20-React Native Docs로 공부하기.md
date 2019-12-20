@@ -7,7 +7,7 @@ comments: true
 ---
 
 # [Running React Native](https://facebook.github.io/react-native/docs/getting-started)
-신규 앱 개발에 리액트 네이티브를 적용하고자하여 [React Native 공식 Docs](https://facebook.github.io/react-native/docs/getting-started)를 참고하여 스터디를 시작합니다.  
+신규 앱 개발에 리액트 네이티브를 적용하고자하여 [React Native 공식 Docs](https://facebook.github.io/react-native/docs/getting-started)를 통해 스터디를 진행합니다.   
 
   
 ## Expo CLI Quickstart
@@ -333,20 +333,19 @@ flex는 화면에서 사용 가능한 공간을 어떻게 구성하는지 정의
 ![flex dimension](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/02e01ba7a19c45ef0dd21c5f8fccd41b/image.png)
 
 #### Flex Direction
+> 이하 단순 이미지 예시와 설명이 많아서 flex 관련 아래 이미지는 [React Native docs](https://github.com/facebook/react-native-website)애서 가져왔습니다.
 
-[`flexDirection`](https://facebook.github.io/react-native/docs/layout-props#flexdirection) controls the direction in which the children of a node are laid out. This is also referred to as the _main axis_. The cross axis is the axis perpendicular to the main axis, or the axis which the wrapping lines are laid out in.
+[`flexDirection`](https://facebook.github.io/react-native/docs/layout-props#flexdirection) 는 flex에 포함되는 자식들의 배치 방향을 결정합니다. 
 
-- `row` Align children from left to right. If wrapping is enabled then the next line will start under the first item on the left of the container.
+- `row` 자식 요소들이 왼쪽에서 오른쪽으로 정렬됩니다.
 
-- `column` (**default value**) Align children from top to bottom. If wrapping is enabled then the next line will start to the left first item on the top of the container.
+- `column` (**default value**) 자식 요소들이 위에서 아래로 정렬됩니다.
 
-- `row-reverse` Align children from right to left. If wrapping is enabled then the next line will start under the first item on the right of the container.
+- `row-reverse` 자식 요소들이 오른쪽에서 왼쪽으로 정렬됩니다.
 
-- `column-reverse` Align children from bottom to top. If wrapping is enabled then the next line will start to the left first item on the bottom of the container.
+- `column-reverse` 자식 요소들이 아래에서 위로 정렬됩니다.
 
-LEARN MORE [HERE](https://yogalayout.com/docs/flex-direction)
-
-```SnackPlayer name=Flex%20Direction
+```javascript
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
