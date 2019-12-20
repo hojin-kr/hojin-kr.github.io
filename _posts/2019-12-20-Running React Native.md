@@ -77,5 +77,44 @@ const styles = StyleSheet.create({
 ![hello world](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/8ad6dc2a2fdc764c85b9f7323aeadaa0/image.png)
 
 위 샘플코드에서  `<View><Text></Text></View>` 는 JSX 입니다. JavaScript에 포함된 XML 마크업 언어입니다. 마치 HTML 처럼 보이지만 웹의 `<div>` `<span>` 태그를 대신하는 React component입니다. `<Text>`는 React의 built-in component로 화면에 Text를 표시해줍니다. 그리고 `<View>`는 `<div>` 혹은 `<span>`과 같은 구역을 나누는 역활을 합니다.  
+
+> 만약에 새로운 React Native app을 만든다면 수 많은 component를 만들게 될겁니다. 작성한 compoent를 표시하는데 필요한건 JSX를 반환하는 `render()` 함수를 호출하는것입니다.  
   
-만약에 새로운 React Native app을 만든다면 수 많은 component를 만들게 될겁니다. 작성한 compoent를 표시하는데 필요한건 JSX를 반환하는 `render()` 함수를 호출하는것입니다. 
+## Props
+대부분의 componet들은 각기 다른 parameter들로 개인화됩니다. 이때 전달되는 parameter들을 React Native에서는 properties를 줄여 props라고 칭합니다.  
+
+### Props Basic Example `<Image>` Component
+`<Image>`는 React Native의 기본 component입니다. 이미지를 화면에 표시하는 기능을 하며 props로 이미지의 uri 를 받습니다.
+`source={pic}`와 같이 중괄호를 사용해서 javascript 변수 pic을 JSX에 포함시킬 수 있습니다.
+
+~~~javascript
+import React, { Component } from 'react';
+import { StyleSheet, Image } from 'react-native';
+
+export default class App extends Component {
+  render() {
+    let pic = {
+      uri: 'https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dd74c34f23a198ed395694f/190d7c56cadb2b09f63c90242fbf6aa3/image.png'
+    };
+    return (
+        <Image source={pic} style={styles.container}/>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
+});
+
+~~~
+
+### Props use your custom components
+
+
+
