@@ -121,11 +121,12 @@ const styles = StyleSheet.create({
 
 ### Your own cmponents can also use props
 앞으로 다양한 composnet를 만들게됩니다. 당연하게도 새롭게 만들어낸 Component 사이에도 Props를 전달하고 받을 수 있습니다. Props의 전달은 기본 Compoent와 마찬가지로 JSX를 통해 전달하며 받을 때는 render 함수안에서 `this.props`를 사용합니다.  
-
+  
+`HelloEveryone` component로 name props를 보내고 `HelloEveryon` component는 name을 받아 문장을 만들어 화면에 표시합니다. 
 
 ~~~javascript
 import React, { Component } from 'react';
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 class HelloEveryone extends Component {
   render() {
@@ -157,8 +158,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 ~~~
 
 ![props your own](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/eed7bcfb60e8e791c833acfd45a5adb4/image.png)
 
+우리는 이제 component그리고 props를 사용해서 앱의 정적인 화면을 구성할 수 있습니다. 이제 상태에 따라 바귀는 앱을 구성하기 위해 `State`에 대해서 배웁니다.
+
+## State
