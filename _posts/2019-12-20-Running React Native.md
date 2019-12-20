@@ -30,10 +30,8 @@ expo name을 "helloWolrd"로 지정하면 Extracting project file...을 진행�
 
 ![init name](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/120b716010b662b12a10cd2ca8694a9b/image.png)
 
-init 작업이 완료되면 프로젝트 설치위치와 간단하게 
-시작하는 
-시작하는 명령어를 
-시작하는 명령어를 보여줍니다.
-
+init 작업이 완료되면 프로젝트 설치위치와 어플리케이션을 시작하는 명령어를 보여줍니다.
 
 ![init complete](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/a1eee79940d823ac0edc3e42e1c0b09e/image.png)
+
+![npm start](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/eb8359ea9587bec42d43219687b5d847/image.png)
