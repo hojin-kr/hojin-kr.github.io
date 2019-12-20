@@ -553,3 +553,38 @@ const styles = StyleSheet.create({
 ***
 
 ## ScrollView 사용하기
+React Native에서 ScrollView는 매우 간단하게 구현할 수 있습니다. `<ScrollView>` component로 감싸주기만 하면 됩니다.  
+
+~~~javascript
+import React, { Component } from 'react';
+import { ScrollView, Image, Text } from 'react-native';
+
+export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
+    render() {
+        return (
+            <ScrollView>
+                <Text style={{fontSize:96}}>Scroll me plz</Text>
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Text style={{fontSize:96}}>If you like</Text>
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Image source={{uri: "https://facebook.github.io/react-native/img/tiny_logo.png", width: 64, height: 64}} />
+                <Text style={{fontSize:96}}>Scrolling down</Text>
+            </ScrollView>
+        );
+    }
+}
+~~~
+
+***
+ 
+## List views 사용하기
+React Native는 데이터 리스트를 표현하기 위해 `FlatList`와 `SectionList`를 제공합니다.  
+
+FlatList는 ScrollView와는 다르게 현재 화면에 표시되는 요소만을 render 합니다. 또한 data와 renderItem 두 props를 가집니다. data는 리스트의 값 목록이고 renderItem은 각각의 값이 render될 component 형식을 나타냅니다.
