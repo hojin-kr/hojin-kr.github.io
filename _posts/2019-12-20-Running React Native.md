@@ -235,8 +235,85 @@ const styles = StyleSheet.create({
 
 styles은 StyleSheet.create를 사용하여 정의합니다. 이렇게 정의한 styles는 component의 style props의 값으로 사용합니다.
 
+## Height and Width
+각 요소에 width, height style을 지정함으로써 높이와 너비 크기를 지정할 수 있습니다. 독특한 점은 React Native의 모든 크기는 단위를 가지지 않고 desnsity-independent pixels로 표현됩니다. 높이와 너비 정의는 Fixed와 Flex로 나눌 수 있습니다. 
 
+### Fixed
+Fixed 방식은 width와 height에 정확한 수치를 주어 해당 높이와 너비로 보여지게합니다. 이 방식으로 크기를 표현할 경우 화면 크기에 상관없이 항상 정확하게 같은 크기로 표현합니다.
 
+~~~javascript
+import React, { Component } from 'react';
+import { StyleSheet, View} from 'react-native';
 
+export default class App extends Component {
+  render() {
+    return (
+        <View>
+          <View style={styles.containerFirst}/>
+          <View style={styles.containerSecond}/>
+          <View style={styles.containerThird}/>
+        </View>
+    );
+  }
+}
 
+const styles = StyleSheet.create({
+  containerFirst: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'powderblue',
+  },
+  containerSecond: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'skyblue',
+  },
+  containerThird: {
+    width: 150,
+    height: 150,
+    backgroundColor: 'steelblue',
+  },
+});
+~~~
 
+![fixed dimension](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/583496623eeb01b85199037026331959/image.png)
+
+### Flex
+Flex 로 화면을 구성할 경우 component의 크기를 사용가능한 공간에 동적으로 확장및 축소합니다. 보통 `flex: 1`로 설정하면 component가 사용가능한 전체 공간을 차지합니다. 
+
+~~~javascript
+import React, {Component} from 'react';
+import {StyleSheet, View} from 'react-native';
+
+export default class App extends Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={styles.containerFirst}/>
+                <View style={styles.containerSecond}/>
+                <View style={styles.containerThird}/>
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    containerFirst: {
+        flex: 1,
+        backgroundColor: 'powderblue',
+    },
+    containerSecond: {
+        flex: 2,
+        backgroundColor: 'skyblue',
+    },
+    containerThird: {
+        flex: 3,
+        backgroundColor: 'steelblue',
+    },
+});
+~~~
+
+![flex dimension](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/02e01ba7a19c45ef0dd21c5f8fccd41b/image.png)
