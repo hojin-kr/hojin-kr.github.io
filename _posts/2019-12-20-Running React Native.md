@@ -34,4 +34,13 @@ init 작업이 완료되면 프로젝트 설치위치와 어플리케이션을 �
 
 ![init complete](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/a1eee79940d823ac0edc3e42e1c0b09e/image.png)
 
+프로젝트 디렉토리로 이동하여 어플리케이션을 시작합니다. 
+~~~
+npm start
+~~~
+
 ![npm start](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/eb8359ea9587bec42d43219687b5d847/image.png)
+
+프로젝트가 시작되면 크롬창에 expo 환경이 열리며 탭에서 'Run on iOS device/emulator'를 선택하면 자동으로 시뮬레이터가 열리며 앱이 실행됩니다.
+
+![npm start expo](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/658b9ed12d3349e7561c204c274785dc/image.png)
