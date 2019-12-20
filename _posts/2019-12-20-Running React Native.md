@@ -6,8 +6,8 @@ tags: [react-native, app]
 comments: true
 ---
 
-# [Running React Native](https://facebook.github.io/react-native/docs)
-신규 앱 개발에 리액트 네이티브를 적용하고자하여 [React Native 공식 Docs](https://facebook.github.io/react-native/docs)를 참고하여 스터디를 시작합니다.  
+# [Running React Native](https://facebook.github.io/react-native/docs/getting-started)
+신규 앱 개발에 리액트 네이티브를 적용하고자하여 [React Native 공식 Docs](https://facebook.github.io/react-native/docs/getting-started)를 참고하여 스터디를 시작합니다.  
 
   
 ## Expo CLI Quickstart
