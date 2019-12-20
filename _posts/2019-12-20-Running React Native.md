@@ -44,3 +44,34 @@ npm start
 프로젝트가 시작되면 크롬창에 expo 환경이 열리며 탭에서 'Run on iOS device/emulator'를 선택하면 자동으로 시뮬레이터가 열리며 앱이 실행됩니다.
 
 ![npm start expo](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/658b9ed12d3349e7561c204c274785dc/image.png)
+
+# Learn the Basics
+React Native의 기본 컨셉을 이해하기 위해서는 JSX, components, state, props와 같은 몇가지 알고 들어갈 것이 있습니다. 만약에 React를 이미 알고 있다면 React Native의 특별한 몇가지만 파악한다면 쉽게 접근할 수 있습니다.   
+
+## Hello World
+항상 새로운 언어를 배울때는 인사를 먼저 배웁니다. React-Native와 인사를 합시다.  
+프로젝트 디렉토리의 App.js에서 <Text>태그로 감싸진 "Open up App.js to start working on your app!"를 Hello Wolrd로 수정합니다.
+ 
+~~~javascript
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+~~~
+
+![hello world](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/8ad6dc2a2fdc764c85b9f7323aeadaa0/image.png)
