@@ -7,8 +7,8 @@ comments: true
 ---
 
 # [Running React Native](https://facebook.github.io/react-native/docs)
-신규 앱 개발에 리액트 네이티브를 적용하고자하여 스터디를 시작합니다.  
-[React Native 공식 Docs 참고](https://facebook.github.io/react-native/docs)  
+신규 앱 개발에 리액트 네이티브를 적용하고자하여 [React Native 공식 Docs](https://facebook.github.io/react-native/docs)를 참고하여 스터디를 시작합니다.  
+
   
 ## Expo CLI Quickstart
 Expo는 다양한 리엑트 툴을 미리 포함하고있어 처음 리액트 앱을 개발할 때 좋습니다. 
