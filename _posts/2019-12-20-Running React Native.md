@@ -112,11 +112,52 @@ const styles = StyleSheet.create({
   },
 });
 
-~~~
+~~~  
+  
+![props image](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/6993b72638029ce8be3808a9e295cea6/image.png)
+
+
 
 ### Your own cmponents can also use props
 앞으로 다양한 composnet를 만들게됩니다. 당연하게도 새롭게 만들어낸 Component 사이에도 Props를 전달하고 받을 수 있습니다. Props의 전달은 기본 Compoent와 마찬가지로 JSX를 통해 전달하며 받을 때는 render 함수안에서 `this.props`를 사용합니다.  
 
 
+~~~javascript
+import React, { Component } from 'react';
+import { StyleSheet, Image, View, Text } from 'react-native';
 
+class HelloEveryone extends Component {
+  render() {
+    return (
+        <View>
+          <Text>Hello {this.props.name}</Text>
+        </View>
+    );
+  }
+}
+
+export default class App extends Component {
+  render() {
+    return (
+        <View style={styles.container}>
+          <HelloEveryone name='hojin'/>
+          <HelloEveryone name='sujin'/>
+          <HelloEveryone name='apple'/>
+        </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    top: 100,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+~~~
+
+![props your own](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/eed7bcfb60e8e791c833acfd45a5adb4/image.png)
 
