@@ -398,7 +398,7 @@ export default class JustifyContentBasics extends Component {
 
 #### Align Items
 
-[`alignItems`](https://facebook.github.io/react-native/docs/layout-props#alignitems) describes how to align children along the cross axis of their container. Align items is very similar to `justifyContent` but instead of applying to the main axis, `alignItems` applies to the cross axis.
+[`alignItems`](https://facebook.github.io/react-native/docs/layout-props#alignitems) `justifyContent`와 유사하지만 교차축에 대해서 정렬이 적용됩니다. 
 
 - `stretch` (**default value**) container의 height와 일치할 때까지 자식 요소를 늘립니다.
 
@@ -437,75 +437,49 @@ export default class AlignItemsBasics extends Component {
 
 ### Align Content
 
-[alignContent](https://facebook.github.io/react-native/docs/layout-props#aligncontent) defines the distribution of lines along the cross-axis. This only has effect when items are wrapped to multiple lines using `flexWrap`.
-
-- `flex-start` (**default value**) Align wrapped lines to the start of the container's cross axis.
-
-- `flex-end` Align wrapped lines to the end of the container's cross axis.
-
-- `stretch` wrapped lines to match the height of the container's cross axis.
-
-- `center` Align wrapped lines in the center of the container's cross axis.
-
-- `space-between` Evenly space wrapped lines across the container's main axis, distributing remaining space between the lines.
-
-- `space-around` Evenly space wrapped lines across the container's main axis, distributing remaining space around the lines. Compared to space between using space around will result in space being distributed to the begining of the first lines and end of the last line.
-
-LEARN MORE [HERE](https://yogalayout.com/docs/align-content)
-
 ![Align Content](https://cdn-images-1.medium.com/max/800/1*cC2XFyCF_igp20Ombt4wBw.png)
 
 ### Flex Wrap
 
-The [`flexWrap`](https://facebook.github.io/react-native/docs/layout-props#flexwrap) property is set on containers and controls what happens when children overflow the size of the container along the main axis. By default children are forced into a single line (which can shrink elements). If wrapping is allowed items are wrapped into multiple lines along the main axis if needed.
-
-When wrapping lines `alignContent` can be used to specify how the lines are placed in the container. learn more [here](https://yogalayout.com/docs/flex-wrap)
-
 ![Flex Wrap](https://cdn-images-1.medium.com/max/800/1*_7v4uQhSsuCn1cfeOMVfrA.png)
-
-### Flex Basis, Grow, and Shrink
-
-- [`flexGrow`](https://facebook.github.io/react-native/docs/layout-props#flexgrow) describes how any space within a container should be distributed among its children along the main axis. After laying out its children, a container will distribute any remaining space according to the flex grow values specified by its children.
-
-  flexGrow accepts any floating point value >= 0, with 0 being the default value. A container will distribute any remaining space among its children weighted by the child’s flex grow value.
-
-- [`flexShrink`](https://facebook.github.io/react-native/docs/layout-props#flexshrink) describes how to shrink children along the main axis in the case that the total size of the children overflow the size of the container on the main axis. Flex shrink is very similar to flex grow and can be thought of in the same way if any overflowing size is considered to be negative remaining space. These two properties also work well together by allowing children to grow and shrink as needed.
-
-  Flex shrink accepts any floating point value >= 0, with 1 being the default value. A container will shrink its children weighted by the child’s flex shrink value.
-
-- [`flexBasis`](https://facebook.github.io/react-native/docs/layout-props#flexbasis) is an axis-independent way of providing the default size of an item along the main axis. Setting the flex basis of a child is similar to setting the `width` of that child if its parent is a container with `flexDirection: row` or setting the `height` of a child if its parent is a container with `flexDirection: column`. The flex basis of an item is the default size of that item, the size of the item before any flex grow and flex shrink calculations are performed.
-
-LEARN MORE [HERE](https://yogalayout.com/docs/flex)
-
-### Width and Height
-
-The `width` property in Yoga specifies the width of the element's content area. Similarly height property specifies the `height` of the element's content area.
-
-Both `width` and `height` can take following values:
-
-- `auto` Is the **default Value**, React Native calculates the width/height for the element based on its content, whether that is other children, text, or an image.
-
-- `pixels` Defines the width/height in absolute pixels. Depending on other styles set on the component, this may or may not be the final dimension of the node.
-
-- `percentage` Defines the width or height in percentage of its parent's width or height respectively.
 
 ### Absolute & Relative Layout
 
-The `position` type of an element defines how it is positioned within its parent.
-
-`relative` (**default value**) By default an element is positioned relatively. This means an element is positioned according to the normal flow of the layout, and then offset relative to that position based on the values of `top`, `right`, `bottom`, and `left`. The offset does not affect the position of any sibling or parent elements.
-
-`absolute` When positioned absolutely an element doesn't take part in the normal layout flow. It is instead laid out independent of its siblings. The position is determined based on the `top`, `right`, `bottom`, and `left` values.
-
 ![Absolute & Relative Layoutp](https://cdn-images-1.medium.com/max/800/1*NlPeRQCQK3Vb5nyjL0Mqxw.png)
 
-#### Going Deeper
+***
 
-Check out the interactive [yoga playground](https://yogalayout.com/playground) that you can use to get a better understanding of flexbox.
+## Handling Text Input  
+`TextInput`은 유저의 텍스트 입력을 받는 기본 component 입니다. `onChangeText` props로 텍스트가 바뀔때 마다 호출되며 `onSubmitEditing` props는 텍스트가 submit될 때 호출 됩니다.
 
-We've covered the basics, but there are many other styles you may need for layouts. The full list of props that control layout is documented [here](./layout-props.md).
+다음 예제는 TextInput으로 입력받은 값을 state에 저장하고 text로 다시 출력합니다.
+  
+~~~javascript
+import React, { Component } from 'react';
+import { Text, TextInput, View } from 'react-native';
 
-We're getting close to being able to build a real application. One thing we are still missing is a way to take user input, so let's move on to [learn how to handle text input with the TextInput component](handling-text-input.md).
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {text: ''};
+    }
 
-See some examples from [Wix Engineers](https://medium.com/wix-engineering/the-full-react-native-layout-cheat-sheet-a4147802405c):
+    render() {
+        return (
+            <View style={{padding: 50}}>
+                <TextInput
+                    style={{height: 40}}
+                    placeholder="Type here to translate!"
+                    onChangeText={(text) => this.setState({text})}
+                    value={this.state.text}
+                />
+                <Text style={{padding: 10, fontSize: 42}}>
+                    {this.state.text}
+                </Text>
+            </View>
+        );
+    }
+}
+~~~
 
+![text input](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/1bdf9a5bb8017b017142614bfb953491/image.png)
