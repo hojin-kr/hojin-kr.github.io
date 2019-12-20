@@ -168,6 +168,75 @@ const styles = StyleSheet.create({
 React Native는 Component를 관리하는 props와 state 두가지 타입의 데이터를 가집니다. props는 부모가 component에 전달하는 정적 값입니다. 그리고 data에 변화를 주기위해서는 state를 사용합니다. 일반적으로 생성자에서 state를 선언하고 변화가 필요할때 setState를 호출하여 사용합니다.   
 
 ### State Example
-Blink는 깜빡이는 
-ㅌ텍스
-ㅌ
+Blink는 깜빡이는 텍스트를 표시합니다. Blink가 호출될때 한 번 props로 텍스트를 받아와서 설정하고 `this.setState`로 state를 변경하여 component의 텍스트가 시간에 따라 보여졌다가 안보여졌다가 하도록합니다.  `setState`가 호출될때 React Native는 App Component를 re-render 합니다. 결과적으로 매 초에 마다 component는 re-render 됩니다.
+
+실제 서비스에서는 앱이 복잡할 수록 component간 props및 state의 의존관계가 복잡해지기 때문에  공통의 데이터에 대해 효율적으로 관리할 수 있도록 React Native는 Redux나 Mobx와 같이 데이터 흐름을 관리하는 라이브러리를 가지고 있습니다. 
+
+~~~javascript
+import React, { Component } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+
+class Blink extends Component {
+  componentDidMount() {
+    // 매 초마다 state를 toggle합니다.
+    setInterval(() => (
+        this.setState(previousState => (
+            { isShowingText: !previousState.isShowingText }
+        ))
+    ), 1000);
+  }
+
+  //state 객체
+  state = { isShowingText: true };
+
+  render() {
+    if (!this.state.isShowingText) {
+      return null;
+    }
+
+    return (
+        <Text>{this.props.text}</Text>
+    );
+  }
+}
+
+export default class App extends Component {
+  render() {
+    return (
+        <View style={styles.container}>
+          <Blink text='Hello World blink' />
+        </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    top: 100,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+~~~
+
+## Style
+React Native이 가지는 대부분의 중심 component는 style props를 가집니다. 그리고 style의 값은 대부분의 CSS 와 일치합니다. 또한, React Native에서 CSS 속성값의 네이밍 방식은 CamelCase를 따릅니다.  
+~~~javascript
+const styles = StyleSheet.create({
+  container: {
+    top: 100,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+~~~
+
+styles은 StyleSheet.create를 사용하여 정의합니다. 이렇게 정의한 styles는 component의 style props의 값으로 사용합니다.
+
+
+
+
+
+
