@@ -365,33 +365,13 @@ export default class FlexDirectionBasics extends Component {
 
 ![Flex Direction](https://cdn-images-1.medium.com/max/800/1*rA7IbuUsJWsx6evKAsabVw.png)
 
-### Layout Direction
-
-Layout direction specifies the direction in which children and text in a hierarchy should be laid out. Layout direction also affects what edge `start` and `end` refer to. By default React Native lays out with LTR layout direction. In this mode `start` refers to left and `end` refers to right.
-
-- `LTR` (**default value**) Text and children are laid out from left to right. Margin and padding applied the start of an element are applied on the left side.
-
-- `RTL` Text and children are laid out from right to left. Margin and padding applied the start of an element are applied on the right side.
-
 #### Justify Content
 
-[`justifyContent`](https://facebook.github.io/react-native/docs/layout-props#justifycontent) describes how to align children within the main axis of their container. For example, you can use this property to center a child horizontally within a container with `flexDirection` set to `row` or vertically within a container with `flexDirection` set to `column`.
+[`justifyContent`](https://facebook.github.io/react-native/docs/layout-props#justifycontent) 자식들이 기본 축에서 어떻게 정렬될지를 정의합니다.
 
-- `flex-start`(**default value**) Align children of a container to the start of the container's main axis.
+- `flex-start`(**default value**) 컨테이너의 자식을 컨테이너의 시작에 지점에 맞춥니다.
 
-- `flex-end` Align children of a container to the end of the container's main axis.
-
-- `center` Align children of a container in the center of the container's main axis.
-
-- `space-between` Evenly space of children across the container's main axis, distributing remaining space between the children.
-
-- `space-around` Evenly space of children across the container's main axis, distributing remaining space around the children. Compared to `space-between` using `space-around` will result in space being distributed to the beginning of the first child and end of the last child.
-
-- `space-evenly` Evenly distributed within the alignment container along the main axis. The spacing between each pair of adjacent items, the main-start edge and the first item, and the main-end edge and the last item, are all exactly the same.
-
-LEARN MORE [HERE](https://yogalayout.com/docs/justify-content)
-
-```SnackPlayer name=Justify%20Content
+```javascript
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
@@ -420,21 +400,9 @@ export default class JustifyContentBasics extends Component {
 
 [`alignItems`](https://facebook.github.io/react-native/docs/layout-props#alignitems) describes how to align children along the cross axis of their container. Align items is very similar to `justifyContent` but instead of applying to the main axis, `alignItems` applies to the cross axis.
 
-- `stretch` (**default value**) Stretch children of a container to match the `height` of the container's cross axis.
+- `stretch` (**default value**) container의 height와 일치할 때까지 자식 요소를 늘립니다.
 
-- `flex-start` Align children of a container to the start of the container's cross axis.
-
-- `flex-end` Align children of a container to the end of the container's cross axis.
-
-- `center` Align children of a container in the center of the container's cross axis.
-
-- `baseline` Align children of a container along a common baseline. Individual children can be set to be the reference baseline for their parents.
-
-> For `stretch` to have an effect, children must not have a fixed dimension along the secondary axis. In the following example, setting `alignItems: stretch` does nothing until the `width: 50` is removed from the children.
-
-LEARN MORE [HERE](https://yogalayout.com/docs/align-items)
-
-```SnackPlayer name=Align%20Items
+```javascript
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
@@ -463,7 +431,7 @@ export default class AlignItemsBasics extends Component {
 
 ### Align Self
 
-[`alignSelf`](https://facebook.github.io/react-native/docs/layout-props#alignself) has the same options and effect as `alignItems` but instead of affecting the children within a container, you can apply this property to a single child to change its alignment within its parent. `alignSelf` overrides any option set by the parent with `alignItems`.
+[`alignSelf`](https://facebook.github.io/react-native/docs/layout-props#alignself) `alignItems`와 같은 효과를 줍니다. 하지만 `alignSelf`는 container 내부 요소에 대해서 각각 지정할 수 있습니다. `alignSelf`는 `alignItems`를 오버라이드합니다.
 
 ![Align Self](https://cdn-images-1.medium.com/max/800/1*J1JCoKwLCokX9JXVBvP71g.png)
 
