@@ -165,3 +165,9 @@ const styles = StyleSheet.create({
 우리는 이제 component그리고 props를 사용해서 앱의 정적인 화면을 구성할 수 있습니다. 이제 상태에 따라 바귀는 앱을 구성하기 위해 `State`에 대해서 배웁니다.
 
 ## State
+React Native는 Component를 관리하는 props와 state 두가지 타입의 데이터를 가집니다. props는 부모가 component에 전달하는 정적 값입니다. 그리고 data에 변화를 주기위해서는 state를 사용합니다. 일반적으로 생성자에서 state를 선언하고 변화가 필요할때 setState를 호출하여 사용합니다.   
+
+### State Example
+Blink는 깜빡이는 
+ㅌ텍스
+ㅌ
