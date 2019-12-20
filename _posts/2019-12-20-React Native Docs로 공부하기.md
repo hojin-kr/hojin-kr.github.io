@@ -16,6 +16,7 @@ Expo는 다양한 리엑트 툴을 미리 포함하고있어 처음 리액트 �
 
 ~~~
 npm install -g expo-cli
+expo init AwsomeProject
 ~~~
 
 초기 템플릿은 blank로 비어있는 상태를 선택합니다.
