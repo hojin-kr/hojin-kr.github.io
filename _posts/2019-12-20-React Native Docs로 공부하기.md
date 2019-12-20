@@ -483,3 +483,73 @@ export default class App extends Component {
 ~~~
 
 ![text input](https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dfc24d987d9e38d7571251f/1bdf9a5bb8017b017142614bfb953491/image.png)
+
+***
+
+## Handling Touches
+버튼을 tapping, 리스트를 scrolling, 지도를 zooming 하는것 처럼 모바일 앱은 다양한 터치 방식의 조합으로 작동합니다. React Native는 모든 표준 터치 방식을 지원합니다.  
+
+### 기본 button 표시하기
+Button은 모든 플랫폼에서 지원하는 기본 component입니다. 
+
+~~~javascript
+import React, { Component } from 'react';
+import { Button, StyleSheet, View } from 'react-native';
+
+export default class ButtonBasics extends Component {
+  _onPressButton() {
+    alert('You tapped the button!')
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="Press Me"
+            color="#841584"
+          />
+        </View>
+        <View style={styles.alternativeLayoutButtonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="This looks great!"
+          />
+          <Button
+            onPress={this._onPressButton}
+            title="OK!"
+            color="#841584"
+          />
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+   flex: 1,
+   justifyContent: 'center',
+  },
+  buttonContainer: {
+    margin: 20
+  },
+  alternativeLayoutButtonContainer: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
+});
+
+~~~
+
+***
+
+## ScrollView 사용하기
