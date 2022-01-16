@@ -1,10 +1,10 @@
 # --- General options --- #
 
 # Name of website
-title: hojin_dev
+title: hojin
 
 # Short description of your site
-description: hojin_dev
+description: hojin
 
 # --- Local development options ---
 # If your website is hosted locally rather than on GitHub, then you need to uncomment the next two parameters to set the url and baseurl
@@ -20,11 +20,8 @@ description: hojin_dev
 
 # List of links in the navigation bar
 navbar-links:
-  github: "https://github.com/hojin-kr"
-  버그리포트: "https://hojin-kr.github.io/tags/#bug"
-  nav-3:
-    - inner-nav-1: ""
-    - inner-nav-2: ""
+  Github: "https://github.com/hojin-kr"
+  Tags: "https://hojin-kr.github.io/tags"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
