@@ -23,29 +23,36 @@ https://github.com/hojin-kr/kubernetes-sample
    2. AWS EKS
   
 3. 지속 배포
-## sets up a local Kubernetes
-### [minikube](https://minikube.sigs.k8s.io/docs/)
-#### Running [minikube](https://minikube.sigs.k8s.io/docs/)
-[minikube](https://minikube.sigs.k8s.io/docs/) sets up a local Kubernetes cluster 
+
+## sets up a local Kubernetes 
+### [minikube](https://minikube.sigs.k8s.io/docs/)  
+#### Running [minikube](https://minikube.sigs.k8s.io/docs/)   
+[minikube](https://minikube.sigs.k8s.io/docs/) sets up a local Kubernetes cluster    
+   
 ```
 ➜  ~ brew install minikube
 Updating Homebrew...
-```
-```
+```   
+
+```   
 ➜  ~ minikube start
 😄  minikube v1.22.0 on Darwin 10.15.7
 ✨  Automatically selected the docker driver. Other choices: hyperkit, virtualbox, ssh
 👍  Starting control plane node minikube in cluster minikube
 🚜  Pulling base image ...
-💾  Downloading Kubernetes v1.21.2 preload ...
-```
+💾  Downloading Kubernetes v1.21.2 preload ...   
+```   
+
 #### Checking kubernetes Cluster & Nodes
+
 ```
 ➜  ~ kubectl get all
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   4m37s
 ```
+
 Or
+
 ```
 ➜  ~ minikube dashboard
 🔌  Enabling dashboard ...
@@ -57,6 +64,7 @@ Or
 🎉  Opening http://127.0.0.1:57142/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ in your default browser...
 
 ```
+
 ### Writing Deployment
 Namespace - Deployment - Service - Ingress
 
@@ -65,6 +73,7 @@ https://kubernetes.io/docs/concepts/services-networking/ingress/
 
 #### Namespace.yaml
 Deploy by defining namespace to manage multiple deployments
+
 ```
 ➜  kubetuto kubectl apply -f namespace.yaml 
 namespace/app1 created
@@ -77,13 +86,16 @@ kube-public            Active   3h30m
 kube-system            Active   3h30m
 kubernetes-dashboard   Active   3h29m
 ```
+
 ```
 apiVersion: v1
 kind: Namespace
 metadata:
   name: app1
 ```
+
 ### #Deployment.yaml
+
 ```
 ➜  kubetuto kubectl apply -f deployment.yaml
 deployment.apps/deployment created
@@ -130,7 +142,9 @@ spec:
         ports:
         - containerPort: 80
 ```
+
 #### Service.yaml
+
 ```
 ➜  kubetuto kubectl apply -f service.yaml 
 service/app1-service created
@@ -154,6 +168,7 @@ replicaset.apps/deployment-5f5d7579f9   5         5         5       3m16s
 NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 app1-service   ClusterIP   10.98.16.238   <none>        80/TCP    18s
 ```
+
 ```
 apiVersion: v1
 kind: Service
@@ -167,8 +182,10 @@ spec:
   - port: 80
     targetPort: 80
 ```
+
 ### minikube local에서 service로 노출
 로컬에서 minikube로 테스트시 DNS 연결 및 Ingress 테스팅이 어렵기 때문에 minikube의 service 기능으로 service르 로컬에 노출시켜 deploeyment의 Pod에 접근 테스트가 가능하다
+
 ```
 ➜  kubetuto minikube service app1-service --namespace app1
 |-----------|--------------|-------------|--------------|
@@ -186,9 +203,11 @@ spec:
 🎉  Opening service app1/app1-service in default browser...
 ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
 ```
+
 #### sercret.yaml
 tls setting 을 위해 secret 키 작업이 필요함
 https://kubernetes.io/ko/docs/concepts/configuration/secret/
+
 ```
 apiVersion: v1
 kind: Secret
@@ -201,7 +220,9 @@ data:
   tls.key: |
 
 ```
+
 #### Ingress.yaml
+
 ```
 ➜  kubetuto kubectl describe ingress app1-tls-ingress --namespace app1
 Name:             app1-tls-ingress
@@ -218,6 +239,7 @@ Rules:
 Annotations:      <none>
 Events:           <none>
 ```
+
 ```
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -248,13 +270,16 @@ spec:
 #### 클러스터 생성
 GUI 환경에서 클러스터 생성
 #### 생성하 클러스터로 CLI로 접근
+
 ```
 gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project fluid-axe-315707
 Fetching cluster endpoint and auth data.
 kubeconfig entry generated for cluster-1.
 ```
+
 #### 배포
 minikube와 동일하게 배포 진행
+
 ```
 kubectl get all --namespace app1
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -282,6 +307,7 @@ app1-tls-ingress   <none>   hojintest.shop             80, 443   25m
 
 #### tls 설정 없이 tls-ingress 진행시 에러 발생
 인증키 작업을 해야함
+
 ```
 xxx@cloudshell:~/test (xxx)$ kubectl describe ingress --namespace app1
 Name:             app1-tls-ingress
@@ -302,7 +328,9 @@ Events:
   Normal   Sync    91s (x2 over 91s)  loadbalancer-controller  Scheduled for sync
   Warning  Sync    3s (x12 over 34s)  loadbalancer-controller  Error syncing to GCP: error running load balancer syncing routine: error initializing translator env: secrets "secret-tls-ingress" not found
 ```
+
 ### Temporarily remove TLS 임시로 TLS 제거하 ingress로 테스트
+
 ```
 kubectl get ingress --namespace app1
 NAME               CLASS    HOSTS            ADDRESS        PORTS   AGE
@@ -330,4 +358,5 @@ Events:
   Normal  IPChanged  27s                 loadbalancer-controller  IP is now 35.241.53.84
   Normal  Sync       26s (x4 over 100s)  loadbalancer-controller  Scheduled for sync
 ```
+
 ![image](https://user-images.githubusercontent.com/22079767/127023894-dafd90e1-5b0c-48e8-8dfb-73069679431f.png)
