@@ -1,0 +1,6 @@
+I"%<h1 id="oh-my-zsh">oh my zsh</h1>
+<p>미니멀한 세팅을 추구하지만 개발 편의성을 위해서 oh my zsh은 설치합니다.
+Oh my zsh은 커뮤니티가 주축이되어 개발되고 있는 zsh의 Configuration 프레임워크입니다.  다양한 Theme를 적용하거나 유용한 기능을 zsh에 손쉽게 추가할 수 있는 환경을 제공합니다.</p>
+
+<p><a href="https://github.com/ohmyzsh/ohmyzsh">GitHub - ohmyzsh/ohmyzsh: 🙃   A delightful community-driven (with 2,000+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool so that makes it easy to keep up with the latest updates from the community.</a></p>
+:ET
