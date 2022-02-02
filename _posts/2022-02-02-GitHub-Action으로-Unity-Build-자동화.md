@@ -4,7 +4,7 @@ title: GitHub Action으로 Unity Build 및 Deploy 자동화
 tags: [ci,cd,unity,github,action]
 ---
 
-# GitHub Action으로 Unity Build 자동화
+# GitHub Action으로 Unity Build 및 Deploy 자동화
 github Action을 활용해서 원하는 깃허브 Unity 프로젝트를 빌드하고 결과물을 생성합니다.   
 Android의 경우 원하는 테스트 트랙으로 자동 배포합니다.   
 
