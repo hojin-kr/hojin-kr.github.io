@@ -1,0 +1,165 @@
+I":2<h1 id="js-유용한-라이브러리">JS 유용한 라이브러리</h1>
+
+<h2 id="목록">목록</h2>
+<ul>
+  <li>animejs : 애니메이션 효과</li>
+  <li>vue-scrollto : 특정 요소로 스크롤 이동</li>
+  <li>Hooper : 슬라이더 (캐러셀)</li>
+  <li>vue-typer : 타이핑 시뮬레이션</li>
+</ul>
+
+<h3 id="--animejs">- animejs</h3>
+
+<p>다양한 애니메이션 효과</p>
+
+<p>https://github.com/juliangarnier/anime#demos-and-examples<br />
+https://animejs.com/documentation</p>
+
+<h4 id="download--install">Download &amp; install</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">animejs</span> <span class="o">--</span><span class="nx">save</span>
+</code></pre></div></div>
+
+<h4 id="usage">Usage</h4>
+<p>ES6 modules</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">anime</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">animejs/lib/anime.es.js</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+<p>or CommonJS</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">anime</span> <span class="o">=</span> <span class="nx">requrie</span><span class="p">(</span><span class="dl">'</span><span class="s1">anime</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+<p>or File include</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">anime.min.js</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<h4 id="basic-sample">Basic sample</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="nx">anime</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">animejs/lib/anime.es.js</span><span class="dl">'</span><span class="p">;</span>
+
+    <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+        <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">//nextTick : DOM 로드 이후 수행</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">anime</span><span class="p">({</span>
+                    <span class="na">targets</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.welcome-section .anime-blink</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="na">direction</span><span class="p">:</span> <span class="dl">'</span><span class="s1">alternate</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="na">opacity</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">100%</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">40%</span><span class="dl">'</span><span class="p">],</span>
+                    <span class="na">easing</span><span class="p">:</span> <span class="dl">'</span><span class="s1">linear</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="na">loop</span><span class="p">:</span> <span class="kc">true</span>
+                <span class="p">});</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="--vue-scrollto">- vue-scrollto</h3>
+
+<p>원하는 위치로 스크롤 이동</p>
+
+<p>https://vue-scrollto.netlify.com/<br />
+https://github.com/rigor789/vue-scrollto</p>
+
+<h4 id="download--install-1">Download &amp; install</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span> <span class="nx">vue</span><span class="o">-</span><span class="nx">scrollto</span>
+</code></pre></div></div>
+<p>or Directly include it in html</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://cdn.jsdelivr.net/npm/vue</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://cdn.jsdelivr.net/npm/vue-scrollto</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<h4 id="usage-1">Usage</h4>
+<p>ES6 modules</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Vue</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">VueScrollTo</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">vue-scrollto</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueScrollTo</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="basic-sample-1">Basic sample</h4>
+<p>DOM id 가 element 인 요소로 스크롤 탑을 이동함</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">#</span><span class="dl">"</span> <span class="nx">v</span><span class="o">-</span><span class="nx">scroll</span><span class="o">-</span><span class="nx">to</span><span class="o">=</span><span class="dl">"</span><span class="s2">'#element'</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Scroll</span> <span class="nx">to</span> <span class="err">#</span><span class="nx">element</span><span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">element</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="nx">Hi</span><span class="p">.</span> <span class="nx">I</span><span class="dl">'</span><span class="s1">m #element.
+&lt;/div&gt;
+</span></code></pre></div></div>
+
+<h3 id="--hooper">- Hooper</h3>
+
+<p>다양한 완성도 있고 옵션 많은 슬라이더(carousel)를 제공</p>
+
+<p>https://github.com/baianat/hooper<br />
+https://baianat.github.io/hooper/getting-started.html
+스타일 적용 쇼케이스
+https://cngu.github.io/vue-typer/#style-showcase</p>
+
+<h4 id="download--install-2">Download &amp; install</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">hooper</span>
+</code></pre></div></div>
+
+<h4 id="usage--basic-sample">Usage &amp; Basic sample</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">hooper</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">slide</span><span class="o">&gt;</span>
+      <span class="nx">slide</span> <span class="mi">1</span>
+    <span class="o">&lt;</span><span class="sr">/slide</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">slide</span><span class="o">&gt;</span>
+      <span class="nx">slide</span> <span class="mi">2</span>
+    <span class="o">&lt;</span><span class="sr">/slide</span><span class="err">&gt;
+</span>    <span class="p">...</span>
+  <span class="o">&lt;</span><span class="sr">/hooper</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/template</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">Hooper</span><span class="p">,</span> <span class="nx">Slide</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">hooper</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="dl">'</span><span class="s1">hooper/dist/hooper.css</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">App</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nx">Hooper</span><span class="p">,</span>
+      <span class="nx">Slide</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<h3 id="--vue-typer">- vue-typer</h3>
+<p>Vue component that simulates a user typing, selecting, and erasing text.
+타이핑 연출</p>
+
+<p>https://github.com/cngu/vue-typer</p>
+
+<h4 id="download--install-3">Download &amp; install</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span> <span class="nx">vue</span><span class="o">-</span><span class="nx">typer</span>
+</code></pre></div></div>
+
+<h4 id="usage-2">Usage</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ES6</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">VueTyper</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue-typer</span><span class="dl">'</span>
+
+<span class="kd">var</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// ES6; property shorthand + Vue should automatically dasherize the key for us</span>
+    <span class="nx">VueTyper</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="basic-sample-2">Basic sample</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">vue</span><span class="o">-</span><span class="nx">typer</span> <span class="nx">text</span><span class="o">=</span><span class="dl">'</span><span class="s1">Hello World! I was registered locally!</span><span class="dl">'</span><span class="o">&gt;&lt;</span><span class="sr">/vue-typer</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dbf86c1af3c2b3c91732973/4897fcae44d840163dd5171f8d379db1/image.png" alt="CSS 예제" /></p>
+
+<hr />
+<h3 id="--패키지-이름">- 패키지 이름</h3>
+
+<h4 id="download--install-4">Download &amp; install</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> 
+</code></pre></div></div>
+
+<h4 id="usage-3">Usage</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<h4 id="basic-sample-3">Basic sample</h4>
+
+:ET

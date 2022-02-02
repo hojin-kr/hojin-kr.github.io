@@ -1,0 +1,6 @@
+I"�<h1 id="앱-구조">앱 구조</h1>
+<p>docker + virtual host로 각 코드이그나이터 앱 라우팅
+app/m/-&gt;CI/m/application
+app/www/-&gt;CI/www/application
+…</p>
+:ET

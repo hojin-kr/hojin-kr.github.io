@@ -1,0 +1,29 @@
+I"<h2 id="docker에서-laravel">Docker에서 Laravel</h2>
+<ul>
+  <li>laravel + mariaDB</li>
+</ul>
+
+<p><a href="https://github.com/bitnami/bitnami-docker-laravel">bitnami docker laravel</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir ~/myapp &amp;&amp; cd ~/myapp
+$ curl -LO https://raw.githubusercontent.com/bitnami/bitnami-docker-laravel/master/docker-compose.yml
+$ docker-compose up
+</code></pre></div></div>
+
+<h3 id="docker-container-id-확인-및-해당-container에서-bash-shell-실행">Docker Container ID 확인 및 해당 Container에서 bash shell 실행</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ docker ps
+CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS              PORTS                    NAMES
+e5251ff1a5ef        bitnami/laravel:6-debian-9   "/app-entrypoint.sh …"   5 minutes ago       Up 5 minutes        0.0.0.0:3000-&gt;3000/tcp   backend_myapp_1
+9ca4a5b884a9        bitnami/mariadb:10.1         "/entrypoint.sh /run…"   5 minutes ago       Up 5 minutes        3306/tcp                 backend_mariadb_1
+
+~
+❯ docker exec -it e5  /bin/bash
+bitnami@e5251ff1a5ef:/app$
+</code></pre></div></div>
+
+<h3 id="로그인-인증">로그인 인증</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer require laravel/ui --dev
+
+php artisan ui vue --auth
+</code></pre></div></div>
+:ET

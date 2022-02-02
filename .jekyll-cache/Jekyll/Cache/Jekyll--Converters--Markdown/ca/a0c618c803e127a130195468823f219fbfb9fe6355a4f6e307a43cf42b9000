@@ -1,0 +1,48 @@
+I"�
+<h1 id="aws-lightsail-centos-php-mysql-세팅">AWS Lightsail CentOS PHP MySQL 세팅</h1>
+<p>퓨어한 CentOS에 PHP 5.6과 MySQL을 설정하고 웹앱 서비스를 위한 PHP 기본 환경을 세팅합니다.</p>
+
+<h3 id="키페어를-이용해-ssh-접속">키페어를 이용해 SSH 접속</h3>
+<p>AWS Lightsail에서 제공하는 키페어를 다운받고 키를 이용하여 ssh 접속합니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ssh -i /키페어 위치.pem centos@xx.xx.xxx.xxx
+</code></pre></div></div>
+
+<h2 id="cent-os-에서-php-56-세팅">Cent OS 에서 PHP 5.6 세팅</h2>
+<p>기본적으로 CentOS는 최초 설치시 모든 포트를 막고 있기 때문에 사용할 포트를 지정하여 오픈해야합니다.</p>
+
+<p><a href="https://www.tecmint.com/install-php-5-6-on-centos-7/">PHP 5.6 설치</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm  
+yum install yum-utils  
+yum-config-manager --enable remi-php56  
+yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo  
+</code></pre></div></div>
+
+<p><a href="https://luckyyowu.tistory.com/139">CentOS Apache 권한 변경</a><br />
+기본적으로 홈 디렉토리로의 접근이 막혀있기 때문에 옵션을 주어야합니다.
+setsebool -P httpd_enable_homedirs on</p>
+
+<p><a href="https://www.lesstif.com/pages/viewpage.action?pageId=6979732">SELINUX 해제</a><br />
+SELINUX의 완전 해제는 권장하지 않음 테스트 환경에서 세부적인 세팅이 어려울때만 사용하고 실서버에서는 사용하면 안됩니다.</p>
+
+<p>PHP 설정<br />
+php.ini를 수정합니다. php short_tag 를 사용하고 있습니다. 그리고 세션을 사용하기 때문에 다음과 같이 설정을 변경합니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>short_tag : On
+data.timezone = Asia/Seoul  
+session.auto_start = 1 
+</code></pre></div></div>
+
+<p>Https 설정 : AllowOverride All</p>
+
+<p><a href="https://opentutorials.org/module/1701/10229">Mysql 설치 및 설정</a></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum -y install http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm  
+yum -y install mysql-community-server  
+systemctl start mysqld  
+systemctl enable mysqld  
+mysql  
+</code></pre></div></div>
+
+<p>Mysql 사용자 정의 함수 수동으로 추가해주어야함 (FN_AES_…) 추가할 때 사용할 DB USER 이름으로 쿼리 수정</p>
+
+:ET

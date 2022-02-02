@@ -1,0 +1,27 @@
+I"�	<h1 id="버그리포트-ios13-대응기">[버그리포트] iOS13 대응기</h1>
+
+<h1 id="뷰-컨트롤러의-madality-변경">뷰 컨트롤러의 Madality 변경</h1>
+
+<center><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dce511ebba0f20bd796a9b6/f99c5c0660a2ee9d08cb42fc9f5f51eb/image.png" width="80%;" /></center>
+
+<p>ios13 버전 디바이스에서 테스트 하면 뷰가 사진과 같이 띄워지는것을 발견하고 부랴부랴 확인하니 뷰 컨트롤러의 Madality 기본 속성값이 변경되었다고합니다.
+현재 앱은 스플래시 스크린정료후에 present() 메소드를 통해 메인뷰를 띄우는데 이렇게 나오면 곤란합니다!</p>
+
+<h2 id="스타일을-지정"><a href="https://sarunw.com/posts/modality-changes-in-ios13/">스타일을 지정</a></h2>
+<p>modal present를 수행하기 전에 modalPresentationStyle 을 fullScreen으로 설정하여 페이지 전환시 fullScreen으로 표시되게 설정합니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    let destination = WebViewController.instantiate(storyboard: "Main")
+    destination.modalPresentationStyle = .fullScreen
+    self.present(destination, animated: true, completion: nil)
+</code></pre></div></div>
+
+<center><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dce511ebba0f20bd796a9b6/8c8ec0269f7869ac6d27b75684e5ce16/image.png" width="80%;" /></center>
+
+<h1 id="다크모드-대응"><a href="https://sarunw.com/posts/modality-changes-in-ios13/">다크모드 대응</a></h1>
+<p>iOS13에서 지원하는 다크모드로 진입시 네이티브 부분에서 텍스트가 보이지 않는 문제가 발생했습니다.
+앱의 대부분은 웹뷰를 통해 서비스하고 있고 네이티브 부분은 ‘로그인’ 기능으로 한정되있기 때문에 다크모드를 지원이 무의미 합니다.
+info.plist 속성에 User Interface Style : Light 를 추가하여 UI 스타일을 Light로 고정하여 다크모드를 지원하지 않도록합니다.</p>
+
+<center><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dce511ebba0f20bd796a9b6/26f9530c625054e36c7e8f7510468435/image.png" width="20%;" /></center>
+<center><img src="https://trello-attachments.s3.amazonaws.com/5db8f4b864493b4c6f0c56bd/5dce511ebba0f20bd796a9b6/24bf904cabf8b463a77f501bcc7956c9/image.png" width="50%;" /></center>
+
+:ET
