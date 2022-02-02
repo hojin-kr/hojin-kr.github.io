@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: https://github.com/hojin-kr
+subtitle: 가보자고
 ---
-Hello.   
-[Github](https://github.com/hojin-kr)
+Hello.  
+[https://github.com/hojin-kr](https://github.com/hojin-kr)
