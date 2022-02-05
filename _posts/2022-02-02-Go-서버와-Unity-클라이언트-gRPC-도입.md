@@ -61,6 +61,13 @@ protoc에서 외부 플러그인으로 씨샵을 지정하고 수행
 
 gitAction으로 배포하면 돌아서 수행하도록 해놔야겠다 
 
+## Grpc 패키지 import 방법 1 
+패키지 직접 설치 
+https://packages.grpc.io
+C# 언어의 패키지를 다운받아 Unity Assets 의 적당한 위치에 넣으면 Unity에서 import 을 수행함
+
+## Grpc패키지 import 방법 2
+Unity dotnet 패키지 매니저 Nuget 을 사용한 설치
 
 1. Unity에서 dotnet 패키지 매니저 Nuget 설치해서 패키지 import
 NuGetForUnity 저장소에서 최신 버전의 릴리즈를 다운로드하여 Unity에 임포트
@@ -82,8 +89,16 @@ Tool -> Nuget -> package manager에서 Search에 gRPC 검색
 
 Todo - 이미지, 설치해야하는 기본 리스트
 
+> 패키지 로드 중 에러 발생  
+gRPC Go 서버를 테스트로 띄워 두고 unity 클라이언트에서 테스트를 진행하였음, 그런데 gRPC 관련 패키지 관련 에러가 발생해서 진행 중단 상태, 해당 원인 파악 후 해야할듯 경고 메시지로 봤을때는, 단순히 해당 패키지가 없어서 그런걸로 생각됨, 관련된 패키지는 다 install했으나 그렇기 때문에 원인 파악이 필요함 
+```
+DllNotFoundException: grpc_csharp_ext
+```
+
+-> Nuget을 통한 패키지 설치해 해당 부분에서 문제가 발생 
 
 
+##  C#을 위해 프로토버퍼 Grpc용 파일로 변환
 3.  C# 클라이언트를 위한 파일 변환
 Grpc csharp 플러그인을 `Grpc.Tools.2.43.0/tools/`에서 찾아 경로를 연결해서 변환 수행
 
@@ -96,27 +111,67 @@ protoc --csharp_out=. --plugin=protoc-gen-csharp_grpc=/${YOUR_WORKSPACE_DIR}/Pac
 > issue.  Grpc tool의 `grpc_csharp_plugin`의 실행권한 문제  
 > 해당 파일에 실행 권한을 부여 `chmod 777 grpc_csharp_plugin `  
 
+# 테스트
+1. Unity에서 빈 씬의 오브젝트를 생성해 스크립트를 연결 
 
-
-> Todo 20220129  
-> 패키지 로드 중 에러 발생  
-gRPC Go 서버를 테스트로 띄워 두고 unity 클라이언트에서 테스트를 진행하였음, 그런데 gRPC 관련 패키지 관련 에러가 발생해서 진행 중단 상태, 해당 원인 파악 후 해야할듯 경고 메시지로 봤을때는, 단순히 해당 패키지가 없어서 그런걸로 생각됨, 관련된 패키지는 다 install했으나 그렇기 때문에 원인 파악이 필요함 
+2. Grpc 샘플 코드
 ```
-DllNotFoundException: grpc_csharp_ext
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Grpc.Core;
+using Helloworld;
+public class TestGrpc : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log("TestGrpc start");
+        Channel channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+        var client = new Helloworld.Greeter.GreeterClient(channel);
+        var reply = client.SayHello(new HelloRequest { Name = "unity" });
+        Debug.Log("TestGrpc end");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
 ```
 
+3. Go Server 실행
+```
+➜  helloworld git:(14c11384) ✗ go run greeter_server/main.go
+2022/02/05 23:48:04 server listening at 127.0.0.1:50051
+```
+
+4. 확인
+Client Log
+```
+TestGrpc start
+UnityEngine.Debug:Log (object)
+TestGrpc:Start () (at Assets/Hojin/TestGrpc.cs:11)
+TestGrpc end
+UnityEngine.Debug:Log (object)
+TestGrpc:Start () (at Assets/Hojin/TestGrpc.cs:15)
+```
+
+Server Log
+```
+2022/02/06 00:14:49 Received: unity
+```
 
 
 # 자동화
 서버에서 명세를 변경하여 Github에 릴리즈하면 GitHub Action에서 트리거를 받아서 신규 생성된 정의 파일로 클라이언트 저장소에 신규 커밋으로 추가하고 푸시 후 노티
 (신규 poto파일의 변환 파일은 서버 개발중 함께, 생성해서 작업 커밋에 포함 시키는걸로, 개발 도중에 어차피 파일 갱신및 생성이 이뤄짐으로 Action에서 수행할 필요는 없을것 같음, 물론 중복으로 한 번 더 해서 올리는것도 더블체크되고 좋기는 함, 커밋 신규로 서버측, 클라이언트측 생성해두고)
 
-
-
 #todo
-#draft
+#blog/live
 
-#개발일지/Go
-#개발일지/gRPC
+
+
 
 
