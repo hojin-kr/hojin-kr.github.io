@@ -1,9 +1,8 @@
 ---  
 layout: post
-title: AWS & 쿠버네티스에 대해서
+title: 쿠버네티스에 대해서
 tags: [aws,container,kubernetes,eks]
 ---  
-
 # 쿠버네티스에 대해서
 서버 아키텍처의 현대화라고 한다면 컨테이너를 빼놓을 수 없게 되었습니다.  많은 개발과 서비스가 컨테이너 기반으로 이뤄지고있고, 컨테이너 기반에서 리소스를 더욱이 효율적으로 활용하기 위해서 컨테이너 오케스트레이션 시스템인 쿠버네티스가 개발되었습니다.
 
@@ -29,17 +28,18 @@ tags: [aws,container,kubernetes,eks]
 ## 기본 과정
 #todo 과정에 따라 브랜치 분리
 - AWS의 관리형 쿠버네티스
+	- EKS (Elastic Kubernetes Service)
+	- EKS를 위한 로컬 환경 설정
+	- EKS 클러스터및 노드그룹을 생성하고 할당
 - 샘플 어플리케이션 배포
 - 직접 컨테이너로 빌드한 어플리케이션 배포
+
+##  고도화 과정
+ #todo 과정에 따라 브랜치 분리
 - 지속 통합 및 지속 배포 (CI/CD)
 	- AWS에 관련 서비스가 있는지 확인 #todo
 	- 깃을 통해 통합 (GitOps)
 	- GitHub Action 사용해서 신규 버전 릴리즈에 맞춰 자동 배포
-
-##  고도화 과정
- #todo 과정에 따라 브랜치 분리
-- 배포 환경 분리
-	- 헬름 차트
 - 다수의 서비스를 대상으로 지속 통합 및 지속 배포 CI/CD
 	- GitOps + 아르고 CD
 - 마이크로 서비스 아키텍처의 서비스 메시 구성
@@ -66,11 +66,11 @@ EKS는 AWS의 완전 관리형 쿠버네티스 서비스입니다.
 
 ECS(컨테이너 서비스), EKS(클러스터 서비스), ECR(컨테이너 레지스트리)의 조합으로 AWS에서 쿠버네티스를 구현합니다.
 
-### AWS EKS를 위한 로컬 환경 설정
+### EKS를 위한 로컬 환경 설정
 로컬 환경에서 AWS EKS와 소통하기위한 툴을 설치합니다.
 > [Getting started with Amazon EKS - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)  
 
-### EKS에 클러스터를 생성합니다.
+### EKS 클러스터및 노드그룹을 생성하고 할당
 eksctl을 사용해서 관리형 EKS 클러스터를 생성합니다. 생성된 클러스터는 쿠버네티스 컨트롤 패널이 설치되어 세팅됩니다.
 
 > eksctl을 사용하여 신규 관리형 클러스터를 생성하면 CloudFormation에 cluster를 추가하는 스택이 추가되어 동작합니다.   
@@ -106,7 +106,7 @@ eksctl을 사용해서 관리형 EKS 클러스터를 생성합니다. 생성된 
 2022-03-05 02:32:40 [✔]  EKS cluster "eksctl-test-1" in "ap-northeast-2" region is ready
 ```
 
-### AWS CLI를 사용해서 kubectl config에 클러스터를 추가합니다.
+AWS CLI를 사용해서 kubectl config에 클러스터를 추가합니다.
 ```
 # using aws cli add kubectl cluster
 ➜  eks aws eks --region ap-northeast-2 update-kubeconfig --name eksctl-test-1
@@ -120,15 +120,15 @@ CURRENT   NAME                                                            CLUSTE
           minikube                                                        minikube                                                        minikube                                                        default
 ```
 
-### 쿠버네티스 API를 사용해서 쿠버네티스 접근을 확인합니다.
-추가된 클러스터의 쿠버네티스 컨트롤 패널로 API를 사용해 명령을 전달하고 반환을 확인합니다.
+쿠버네티스 API를 사용해서 쿠버네티스 접근을 확인합니다. 추가된 클러스터의 쿠버네티스 컨트롤 패널로 API를 사용해 명령을 전달하고 반환을 확인합니다.
 ```
 ➜  eks kubectl get all
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   8m43s
 ```
 
-### eksctl 사용해서 노드그룹 추가
+eksctl 사용해서 노드그룹을 생성하고 클러스터에 할당합니다.
+노드 그룹은 AWS EC2 컴퓨팅 엔진이 자동으로 세팅되어 클러스터에 할당됩니다.
 
 ```
 # 현재 eks에 세팅된 클러스터 조회
@@ -178,8 +178,7 @@ Error: No nodegroups found
 2022-03-05 02:42:30 [ℹ]  all nodegroups have up-to-date cloudformation templates
 ```
 
-###  추가된 노드그룹 조회
-클러스터가 세팅되고, 노드그룹이 추가되었는지 확인합니다.
+노드 그룹 추가가 완료되면, 노드그룹이 추가되어 클러스터가 제대로 세팅되었는지 조회합니다.
 
 > Tip.  
 > - CoreDNS에 의해 자동으로 내부 DNS가 생성된것을 확인할 수 있습니다.  
@@ -197,7 +196,7 @@ NAME                                                STATUS   ROLES    AGE     VE
 ip-192-168-16-191.ap-northeast-2.compute.internal   Ready    <none>   5m32s   v1.21.5-eks-9017834
 ```
 
-##  어플리케이션 배포
+##  샘플 어플리케이션 배포
 테스트 어플리케이션을 배포해서 디플로이먼트와 서비스를 세팅하여 동작을 확인합니다.
 
 ```
@@ -298,7 +297,297 @@ replicaset.apps/hello-node-7567d9fdc9   1         1         1       87s
 ```
 
 ## 직접 컨테이너로 빌드한 어플리케이션 배포
+### EKS 클러스터및 노드그룹을 세팅합니다. 
+동일한 작업이기 때문에 스크립트로 만들어서 수행하고 완료되기를 기다립니다. 
+```
+#!/bin/bash
+NAME=$1
+REGION=ap-northeast-2
+
+# 클러스터 및 노드그룹 생성
+eksctl create cluster \
+--name $NAME \
+--version 1.21 \
+--nodegroup-name $NAME \
+--node-type t2.small \
+--nodes 2 \
+--nodes-min 2 \
+--nodes-max 2 
+
+# 생성된 EKS 클러스터의 쿠버네티스로 kubectl context세팅
+aws eks --region $REGION update-kubeconfig --name $NAME
+
+# 세팅 확인
+kubectl config get-contexts
+kubectl get all
+eksctl get cluster
+eksctl get nodegroup --cluster $NAME
+```
+
+쿠버네티스에 어플리케이션을 배포하기위해서는 기본적으로 컨테이너화된 어플리케이션을 제공해야합니다. 그러면 쿠버네티스에서는 컨테이너 저장소에서 컨테이너를 Pull받아 적재하고 실행합니다.
+
+### AWS 컨테이너 저장소 ECR 셋업
+
+AWS의 컨테이너 저장소로는 **Amazon Elastic Container Registry**(ECR서비스를 제공합니다. 간단한 Go어플리케이션을 빌드하여 ECR로 푸시합니다.
+
+컨테이너를 저장할 ECR 레포지토리를 생성합니다.
+```
+➜  eks aws ecr create-repository \   
+> --repository-name test-eks
+
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:ap-northeast-2:771148603266:repository/test-eks",
+        "registryId": "771148603266",
+        "repositoryName": "test-eks",
+        "repositoryUri": "771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks",
+        "createdAt": "2022-03-05T13:06:58+09:00",
+        "imageTagMutability": "MUTABLE",
+        "imageScanningConfiguration": {
+            "scanOnPush": false
+        },
+        "encryptionConfiguration": {
+            "encryptionType": "AES256"
+        }
+    }
+}
+```
+
+AWS ECR 의 Private 저장소로 푸시하기 위해서 인증 토큰을 받고 도커 클라이언트에 레지스트리를 인증합니다. 
+```
+➜  basic aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 771148603266.dkr.ecr.ap-northeast-2.amazonaws.com
+Login Succeeded
+```
+
+
+### 샘플 어플리케이션을 빌드하고 ECR로 푸시
+
+<샘플 HTTP Go 어플리케이션>
+```
+package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func hello(w http.ResponseWriter, req *http.Request) {
+
+    fmt.Fprintf(w, "hello\n")
+}
+
+func bye(w http.ResponseWriter, req *http.Request) {
+
+    fmt.Fprintf(w, "bye\n")
+}
+
+
+func headers(w http.ResponseWriter, req *http.Request) {
+
+    for name, headers := range req.Header {
+        for _, h := range headers {
+            fmt.Fprintf(w, "%v: %v\n", name, h)
+        }
+    }
+}
+
+func main() {
+    http.HandleFunc("/hello", hello)
+    http.HandleFunc("/bye", bye)
+    http.HandleFunc("/headers", headers)
+
+    http.ListenAndServe(":8090", nil)
+}
+```
+
+<Dockerfile>
+```
+FROM golang:1.16-alpine
+
+WORKDIR /app
+COPY . ./
+
+CMD [ "go", "run", "main.go" ]
+```
+
+AWS ECR에 생성한 레포지토리 이름과 일치하게 tag를 지정하여 빌드합니다.  그리고 ECR의 타겟 이미지 정보와 태그를 연결하고 푸시합니다.
+```
+# 빌드
+➜  basic docker build -t test-eks 
+# ECR 레포지토리의 이미미지와 태깅으로 연결
+➜  basic docker tag test-eks:latest 771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks:latest
+# 푸시
+➜  basic docker push 771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks:latest
+
+The push refers to repository [771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks]
+64c37ddcbb2d: Pushed 
+15eb9ba7eb67: Pushed 
+c4fe7bed7430: Pushed 
+40ab4c9c8714: Pushed 
+0ded06e76c58: Pushed 
+ad88393a9d2d: Pushed 
+07d3c46c9599: Pushed 
+latest: digest: sha256:42479bfb5d0a1e60ea712ae56df444269ce4ba3b28cacaa6c9caf124f0938b6a size: 1779
+```
+
+직접 빌드하여 저장소로 푸시한 이미지를 쿠버네티스에 적재하여 배포합니다.
+
+Image : `771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks:latest`
+
+### 쿠버네티스 정의 파일  YAML 작성
+Deployment 타입으로 직접 빌드한 이미지를 지정합니다.
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic
+  labels:
+    app: basic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic
+  template:
+    metadata:
+      labels:
+        app: basic
+    spec:
+      containers:
+      - name: basic
+        image: "771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks:latest"
+        ports:
+        - containerPort: 8090
+
+```
+
+### 배포
+Kubectl 명령을 사용해서 쿠버네티스 API로 배포를 요청합니다.
+```
+➜  deployment kubectl apply -f basic_deployment.yaml 
+deployment.apps/basic created
+➜  deployment kubectl expose deployment  basic --type=LoadBalancer --port=80 --target-port=8090
+service/basic exposed
+
+```
+
+-> 쿠버네티스 버전을 로컬 미니쿠베랑 맞춰서 한번 해보자
+로컬 미니쿠베는 되는데 클라우드 최신에서는 안되니까. 
+-> 비용 때문에 여기가지만하고 그라파나랑 프로메테우스는 미니쿠베에 세팅해서 테스트 하는것도 방법
+
+커맨드를 도커파일이 아니라 쿠버네티스에서 불러와서 실행하게
+https://cloud.google.com/kubernetes-engine/docs/quickstart
 #todo
+AWS EKS 에 이슈가 있어서 배포가 안되는걸로 생각되서 일단 다음 진행 
+
+## 지속 통합 및 지속 배포 (CI/CD)
+어플리케이션이 배포되는 목적지는 쿠버네티스지만 그 과정에서 작업 내용에 대한 지속 통합과 지속 배포 플랜을 구성하는것이 필요합니다. GitOps 방식을 채택하여 지속 통합은 Git으로 통합하는 정의를 기반으로 지속적인 배포를 진행합니다.
+
+### GitHub를 활용한 지속 통합 CI
+Git의 대표적인 제공자인 Github 레포지토리를 사용해서 작업 코드를 통합합니다. 또한,GitHub Action 서비스를 활용하여 코드에서 컨테이너 이미지로 빌드 및 컨테이너를 적재합니다.
+
+1. 코드 작업 
+2. 깃 푸시
+3. 컨테이너 이미지 빌드및 푸시
+
+### Helm을 활용한 지속 배포 CD
+통합된 작업물을 가지고 지속적으로 신규 배포를 진행합니다. 
+지속 배포시에는 배포 환경에 따라 어플리케이션의 구성 및 설정이 변경될 수 있기 대문에 쿠버네티스 패키지 매니저인 헬름을 사용하여 버전 및 환경 구성을 관리합니다. 
+
+1. 배포 환경에 따라 설정을 변경하여 배포
+
+## Helm으로 어플리케이션 배포
+> 비용의 문제로 로컬 경량 쿠버네티스 minikube로 대체합니다.  
+
+
+```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm search repo prometheus-community
+helm install prometheus-community/prometheus --generate-name
+
+
+
+➜  eks watch kubectl get all            
+
+Every 2.0s: kubectl get all                                                                                                                                                             hojinjangs-MacBook-Air.local: Tue Mar  8 00:31:44 2022
+
+NAME                                                            READY   STATUS    RESTARTS   AGE
+pod/prometheus-1646666941-alertmanager-855ccbbdc8-hhmkq         2/2     Running   0          2m40s
+pod/prometheus-1646666941-kube-state-metrics-8455fb7578-726r4   1/1     Running   0          2m40s
+pod/prometheus-1646666941-node-exporter-hkfn7                   1/1     Running   0          2m40s
+pod/prometheus-1646666941-pushgateway-64784f5ddd-2mqnk          1/1     Running   0          2m40s
+pod/prometheus-1646666941-server-85744cdff9-brn5v               2/2     Running   0          2m40s
+
+NAME                                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes                                 ClusterIP   10.96.0.1       <none>        443/TCP    19m
+service/prometheus-1646666941-alertmanager         ClusterIP   10.96.168.248   <none>        80/TCP     2m40s
+service/prometheus-1646666941-kube-state-metrics   ClusterIP   10.99.199.116   <none>        8080/TCP   2m40s
+service/prometheus-1646666941-node-exporter        ClusterIP   None            <none>        9100/TCP   2m40s
+service/prometheus-1646666941-pushgateway          ClusterIP   10.96.139.81    <none>        9091/TCP   2m40s
+service/prometheus-1646666941-server               ClusterIP   10.107.26.2     <none>        80/TCP     2m40s
+
+NAME                                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/prometheus-1646666941-node-exporter   1         1         1       1            1           <none>          2m40s
+
+NAME                                                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/prometheus-1646666941-alertmanager         1/1     1            1           2m40s
+deployment.apps/prometheus-1646666941-kube-state-metrics   1/1     1            1           2m40s
+deployment.apps/prometheus-1646666941-pushgateway          1/1     1            1           2m40s
+deployment.apps/prometheus-1646666941-server               1/1     1            1           2m40s
+
+NAME                                                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/prometheus-1646666941-alertmanager-855ccbbdc8         1         1         1       2m40s
+replicaset.apps/prometheus-1646666941-kube-state-metrics-8455fb7578   1         1         1       2m40s
+replicaset.apps/prometheus-1646666941-pushgateway-64784f5ddd          1         1         1       2m40s
+replicaset.apps/prometheus-1646666941-server-85744cdff9               1         1         1       2m40s
+
+
+```
+
+프로메테우스 서버 서비스를 연결합니다.
+```
+➜  eks minikube service prometheus-1646666941-server
+|-----------|------------------------------|-------------|--------------|
+| NAMESPACE |             NAME             | TARGET PORT |     URL      |
+|-----------|------------------------------|-------------|--------------|
+| default   | prometheus-1646666941-server |             | No node port |
+|-----------|------------------------------|-------------|--------------|
+😿  service default/prometheus-1646666941-server has no node port
+🏃  Starting tunnel for service prometheus-1646666941-server.
+|-----------|------------------------------|-------------|------------------------|
+| NAMESPACE |             NAME             | TARGET PORT |          URL           |
+|-----------|------------------------------|-------------|------------------------|
+| default   | prometheus-1646666941-server |             | http://127.0.0.1:59258 |
+|-----------|------------------------------|-------------|------------------------|
+🎉  Opening service default/prometheus-1646666941-server in default browser...
+❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+```
+
+
+## Service mesh
+[Istio / Getting Started](https://istio.io/latest/docs/setup/getting-started/)
+쿠버네티스 서비스 메시 Istio을 세팅하고 데이터 수집, 분석, 모니터링을 위한 프로메티우스와 그라파타를 설치합니다.
+
+### minikube에서 로드밸런서 연결
+서비스 프로바이더에서 로드밸런서 타입의 서비스를 배포하면 프로바이더에서 외부IP를 할당해줍니다. 하지만 minikube의 경우 `minikube tunnel` 명령어를 사용해 minikube상의 로드밸런서의 외부 IP를 로컬 호스트로 연결하여 사용할 수 있게합니다.
+
+```
+➜  helm minikube tunnel
+✅  Tunnel successfully started
+
+📌  NOTE: Please do not close this terminal as this process must stay alive for the tunnel to be accessible ...
+
+❗  The service/ingress istio-ingressgateway requires privileged ports to be exposed: [80 443]
+🔑  sudo permission will be asked for it.
+🏃  Starting tunnel for service istio-ingressgateway.
+```
+
+> Tip.  
+> Networking and Connectivity Commands:  
+>   service        Returns a URL to connect to a service  
+>   tunnel         Connect to LoadBalancer services  
+
 
 
 
