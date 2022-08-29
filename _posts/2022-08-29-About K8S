@@ -1,0 +1,78 @@
+---
+layout: post
+title: About Kubernetes
+tags: [aws,container,kubernetes,eks]
+---
+# About Kubernetes
+
+Kubernetes is a tool for managing containers. A container is an executable package of an application. Container packaging of an application has lightness, portability, and ease of virtualization, and utilizes these characteristics to virtualize resources to efficiently configure the server architecture.
+When using Kubernetes, instead of allocating one physical resource (EC2) to one application, virtualize and service multiple applications on the resource (EC2) or configure the service structure of the MSA pattern by closely configuring internal services. It is advantageous to do
+Kubernetes manages each state by defining it with a Kubernetes yaml file. A representative tool for packaging and managing definition files is the Helm chart, which improves reusability and manageability by versioning and packaging deployment definition files.
+
+### Things that you need
+* Container image of the application to be deployed
+* CodeBuild: Build your code into container images in the cloud
+* ECR: save container image
+* Compute to install Kubernetes system on
+* EKS : AWS managed Kubernetes system
+* Node-Group : Group of EC2 instances
+
+# What is Kubernetes?
+A container orchestration tool.
+Kubernetes technology is a feature for efficiently managing container-based applications.
+
+![](/assets/img/5E244AB3-A764-4B0F-A614-671D644486C1.png)
+
+# Component
+It has a structure of Pods, Services, Deployments, and ReplicaSets.
+* Pod: A bundle of applications
+* Service: External exposure of Pods
+* ReplicaSet: Manage replica creation
+* Deployment: an abstract concept that groups components together
+
+![](/assets/img/A0854668-E1EF-41BE-B113-E1619E31D045.png)
+
+# How to use it?
+Deploying and managing applications on Kubernetes uses definition files. Manage applications by distributing definitions of their current state.
+The contents of the definition file below pull the nginx container image and deploy it to the Kubernetes system.
+SAMPLE
+```
+apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: nginx
+    labels:
+  app: nginx
+    spec:
+      replicas: 3
+  selector:
+    matchLabels:
+     app: nginx
+    template:
+  metadata:
+   labels:
+    app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.20.2
+
+```
+
+# Management of definition files
+Helm Chart
+Overall Kubernetes CD tool for extensible writing, packaging, and distribution of definition files.
+
+# Deploy the definition file
+Deploy the application by applying the definition file to the Kubernetes environment.
+### How to deploy
+You can distribute the definition file using various methods such as Kubernetes Control, Helm, and Argo CD.
+
+Apply the completed yaml definition file using the Kubectl Kubernetes control command
+````
+kubectl apply -f build/deployment.yaml
+helm install server build/server
+```
+
+ArgoCD After installing the argoCD tool, set the deployment using the GUI argoCD + Helm
+If you use the combination of the helm chart and argoCD, you have the advantage of being able to manage and reflect the values ​​of Helm's Values ​​in argoCD.
