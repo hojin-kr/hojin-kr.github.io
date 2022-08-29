@@ -1,8 +1,8 @@
----  
+---
 layout: post
-title: About Kubernetes
+title: About Kubernetes & AWS Practice
 tags: [aws,container,kubernetes,eks]
----  
+---
 
 # About Kubernetes
 Containers have become indispensable when it comes to modernizing server architecture. Many developments and services are based on containers, and Kubernetes, a container orchestration system, has been developed to more efficiently utilize resources based on containers.

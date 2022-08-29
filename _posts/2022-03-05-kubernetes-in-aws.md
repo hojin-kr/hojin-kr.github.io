@@ -1,8 +1,8 @@
----  
+---
 layout: post
-title: 쿠버네티스에 대해서
+title: 쿠버네티스에 대해서 & AWS 실습
 tags: [aws,container,kubernetes,eks]
----  
+---
 # 쿠버네티스에 대해서
 서버 아키텍처의 현대화라고 한다면 컨테이너를 빼놓을 수 없게 되었습니다.  많은 개발과 서비스가 컨테이너 기반으로 이뤄지고있고, 컨테이너 기반에서 리소스를 더욱이 효율적으로 활용하기 위해서 컨테이너 오케스트레이션 시스템인 쿠버네티스가 개발되었습니다.
 
@@ -18,10 +18,10 @@ tags: [aws,container,kubernetes,eks]
 - 마이크로 서비스 아키텍처(MSA)의 새로운 서비스 아키텍처로의 확장에 대한 바탕
 	- MSA를 구성하기 위해  서비스 메시(서비스가 망사형 구조로 연결되는 형태를 지칭함) 구조의 서비스 세팅이 필요합니다. 서비스 메시 구조를 쿠버네티스에서 효율적이며 편리하게 구성이 가능합니다.
 - 구글이 주도하고 이제는 모두가 기여하는 오픈소스 프로그램
-	- 구글에서 시작한 오픈소스이지만 이제는 모두가 기여하는 오픈소스 프로그램으로 지금 이 순간에도 수많은 플러그인과 추가 개발이 이뤄지고 있습니다. 
+	- 구글에서 시작한 오픈소스이지만 이제는 모두가 기여하는 오픈소스 프로그램으로 지금 이 순간에도 수많은 플러그인과 추가 개발이 이뤄지고 있습니다.
 
 # 쿠버네티스 블루프린트
-쿠버네티스를 클라우드 프로바이더에 세팅하는 블루 프린트를 설명합니다. 
+쿠버네티스를 클라우드 프로바이더에 세팅하는 블루 프린트를 설명합니다.
 해당 블로그에는 과정을 설명하고 블루프틴트는 아래 깃에서 받아 사용합니다.
  #todo GitHub
 
@@ -57,10 +57,10 @@ tags: [aws,container,kubernetes,eks]
 ### Elastic Kubernetes Service
 [Elastic Kubernetes Service](https://ap-northeast-2.console.aws.amazon.com/eks/home?region=ap-northeast-2)
 Fully managed Kubernetes control plane
-EKS는 AWS의 완전 관리형 쿠버네티스 서비스입니다. 
+EKS는 AWS의 완전 관리형 쿠버네티스 서비스입니다.
 
-> [Amazon EKS Workshop :: Amazon EKS Workshop](https://www.eksworkshop.com)  
-> AWS EKS Workshop - AWS의 교육자료  
+> [Amazon EKS Workshop :: Amazon EKS Workshop](https://www.eksworkshop.com)
+> AWS EKS Workshop - AWS의 교육자료
 
 쿠버네티스틔 기본 아키텍처에서 AWS EKS를 사용하여 완전 관리형 Control Plane Node 서비스를 이용하며, EC2 환경에 Data Plane Worker Node를 사용합니다.
 
@@ -68,18 +68,18 @@ ECS(컨테이너 서비스), EKS(클러스터 서비스), ECR(컨테이너 레�
 
 ### EKS를 위한 로컬 환경 설정
 로컬 환경에서 AWS EKS와 소통하기위한 툴을 설치합니다.
-> [Getting started with Amazon EKS - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)  
+> [Getting started with Amazon EKS - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
 
 ### EKS 클러스터및 노드그룹을 생성하고 할당
 eksctl을 사용해서 관리형 EKS 클러스터를 생성합니다. 생성된 클러스터는 쿠버네티스 컨트롤 패널이 설치되어 세팅됩니다.
 
-> eksctl을 사용하여 신규 관리형 클러스터를 생성하면 CloudFormation에 cluster를 추가하는 스택이 추가되어 동작합니다.   
+> eksctl을 사용하여 신규 관리형 클러스터를 생성하면 CloudFormation에 cluster를 추가하는 스택이 추가되어 동작합니다.
 
 ```
 ➜  eks eksctl create cluster \
 > --name eksctl-test-1 \
 > --version 1.21 \
-> --without-nodegroup 
+> --without-nodegroup
 2022-03-05 02:19:35 [ℹ]  eksctl version 0.86.0
 2022-03-05 02:19:35 [ℹ]  using region ap-northeast-2
 2022-03-05 02:19:35 [ℹ]  setting availability zones to [ap-northeast-2c ap-northeast-2a ap-northeast-2b]
@@ -87,13 +87,13 @@ eksctl을 사용해서 관리형 EKS 클러스터를 생성합니다. 생성된 
 2022-03-05 02:19:35 [ℹ]  subnets for ap-northeast-2a - public:192.168.32.0/19 private:192.168.128.0/19
 2022-03-05 02:19:35 [ℹ]  subnets for ap-northeast-2b - public:192.168.64.0/19 private:192.168.160.0/19
 2022-03-05 02:19:35 [ℹ]  using Kubernetes version 1.21
-2022-03-05 02:19:35 [ℹ]  creating EKS cluster "eksctl-test-1" in "ap-northeast-2" region with 
+2022-03-05 02:19:35 [ℹ]  creating EKS cluster "eksctl-test-1" in "ap-northeast-2" region with
 2022-03-05 02:19:35 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=ap-northeast-2 --cluster=eksctl-test-1'
 2022-03-05 02:19:35 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "eksctl-test-1" in "ap-northeast-2"
 2022-03-05 02:19:35 [ℹ]  CloudWatch logging will not be enabled for cluster "eksctl-test-1" in "ap-northeast-2"
 2022-03-05 02:19:35 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=ap-northeast-2 --cluster=eksctl-test-1'
-2022-03-05 02:19:35 [ℹ]  
-2 sequential tasks: { create cluster control plane "eksctl-test-1", wait for control plane to become ready 
+2022-03-05 02:19:35 [ℹ]
+2 sequential tasks: { create cluster control plane "eksctl-test-1", wait for control plane to become ready
 }
 2022-03-05 02:19:35 [ℹ]  building cluster stack "eksctl-eksctl-test-1-cluster"
 2022-03-05 02:19:36 [ℹ]  deploying stack "eksctl-eksctl-test-1-cluster"
@@ -114,9 +114,9 @@ Added new context arn:aws:eks:ap-northeast-2:771148603266:cluster/eksctl-test-1 
 # checkout success add cluster
 ➜  eks kubectl config get-contexts
 CURRENT   NAME                                                            CLUSTER                                                         AUTHINFO                                                        NAMESPACE
-*         arn:aws:eks:ap-northeast-2:771148603266:cluster/eksctl-test-1   arn:aws:eks:ap-northeast-2:771148603266:cluster/eksctl-test-1   arn:aws:eks:ap-northeast-2:771148603266:cluster/eksctl-test-1   
-          arn:aws:eks:ap-northeast-2:771148603266:cluster/test-1          arn:aws:eks:ap-northeast-2:771148603266:cluster/test-1          arn:aws:eks:ap-northeast-2:771148603266:cluster/test-1          
-          iam-root-account@eksctl-test-1.ap-northeast-2.eksctl.io         eksctl-test-1.ap-northeast-2.eksctl.io                          iam-root-account@eksctl-test-1.ap-northeast-2.eksctl.io         
+*         arn:aws:eks:ap-northeast-2:771148603266:cluster/eksctl-test-1   arn:aws:eks:ap-northeast-2:771148603266:cluster/eksctl-test-1   arn:aws:eks:ap-northeast-2:771148603266:cluster/eksctl-test-1
+          arn:aws:eks:ap-northeast-2:771148603266:cluster/test-1          arn:aws:eks:ap-northeast-2:771148603266:cluster/test-1          arn:aws:eks:ap-northeast-2:771148603266:cluster/test-1
+          iam-root-account@eksctl-test-1.ap-northeast-2.eksctl.io         eksctl-test-1.ap-northeast-2.eksctl.io                          iam-root-account@eksctl-test-1.ap-northeast-2.eksctl.io
           minikube                                                        minikube                                                        minikube                                                        default
 ```
 
@@ -143,11 +143,11 @@ eksctl-test-1	ap-northeast-2	False
 2022-03-05 02:37:49 [ℹ]  using region ap-northeast-2
 Error: No nodegroups found
 # 클러스터에 노드그룹 추가
-➜  eks eksctl create nodegroup \                   
+➜  eks eksctl create nodegroup \
 --cluster eksctl-test-1 \
 --region ap-northeast-2 \
 --name test-group \
---node-type t2.micro \     
+--node-type t2.micro \
 --nodes 1 \
 --nodes-min 1 \
 --nodes-max 1 \
@@ -158,8 +158,8 @@ Error: No nodegroups found
 2022-03-05 02:38:22 [ℹ]  nodegroup "test-group" will use "" [AmazonLinux2/1.21]
 2022-03-05 02:38:22 [ℹ]  1 nodegroup (test-group) was included (based on the include/exclude rules)
 2022-03-05 02:38:22 [ℹ]  will create a CloudFormation stack for each of 1 managed nodegroups in cluster "eksctl-test-1"
-2022-03-05 02:38:22 [ℹ]  
-2 sequential tasks: { fix cluster compatibility, 1 task: { 1 task: { create managed nodegroup "test-group" } } 
+2022-03-05 02:38:22 [ℹ]
+2 sequential tasks: { fix cluster compatibility, 1 task: { 1 task: { create managed nodegroup "test-group" } }
 }
 2022-03-05 02:38:22 [ℹ]  checking cluster stack for missing resources
 2022-03-05 02:38:22 [ℹ]  cluster stack has all required resources
@@ -180,9 +180,9 @@ Error: No nodegroups found
 
 노드 그룹 추가가 완료되면, 노드그룹이 추가되어 클러스터가 제대로 세팅되었는지 조회합니다.
 
-> Tip.  
-> - CoreDNS에 의해 자동으로 내부 DNS가 생성된것을 확인할 수 있습니다.  
-> - EC2 Dashboard에서 해당 인스턴스가 생성되어있는 것을 확인 할 수 있습니다.  
+> Tip.
+> - CoreDNS에 의해 자동으로 내부 DNS가 생성된것을 확인할 수 있습니다.
+> - EC2 Dashboard에서 해당 인스턴스가 생성되어있는 것을 확인 할 수 있습니다.
 
 ```
 ➜  eks eksctl get nodegroup --cluster eksctl-test-1
@@ -216,7 +216,7 @@ kubernetes   ClusterIP      10.100.0.1      <none>                              
 ```
 
 ### 이슈 발생 및 해결
-샘플 어플리케이션의 상태가 `pendding` 상태에서 `running` 으로 전환되지 않습니다. 원인을 파악하기 위해 쿠버네티스의 이벤트를 확인합니다. 
+샘플 어플리케이션의 상태가 `pendding` 상태에서 `running` 으로 전환되지 않습니다. 원인을 파악하기 위해 쿠버네티스의 이벤트를 확인합니다.
 ```
 # 쿠베네티스 이벤트 조회
 ➜  eks kubectl get events
@@ -231,7 +231,7 @@ LAST SEEN   TYPE      REASON                    OBJECT                          
 
 ```
 # 노드그룹의 노드 개수를 2개로 수정
-➜  eks eksctl scale nodegroup \                                                                     
+➜  eks eksctl scale nodegroup \
 --cluster eksctl-test-1 \
 --name test-group \
 --nodes 2 \
@@ -256,7 +256,7 @@ hello-node-7567d9fdc9-4s7qh   1/1     Running   0          17m
 ➜  eks kubectl get services
 NAME         TYPE           CLUSTER-IP      EXTERNAL-IP                                                                    PORT(S)          AGE
 hello-node   LoadBalancer   10.100.168.10   ad3a74a624b464a72af77bc4e8930c0f-1995202289.ap-northeast-2.elb.amazonaws.com   8080:31540/TCP   45m
-kubernetes   ClusterIP      10.100.0.1      <none> 
+kubernetes   ClusterIP      10.100.0.1      <none>
 
 # 노출된 서비스의 외부 IP로 접속 테스트
 ➜  eks curl http://ad3a74a624b464a72af77bc4e8930c0f-1995202289.ap-northeast-2.elb.amazonaws.com:8080
@@ -276,7 +276,7 @@ accept=*/*
 host=ad3a74a624b464a72af77bc4e8930c0f-1995202289.ap-northeast-2.elb.amazonaws.com:8080
 user-agent=curl/7.77.0
 BODY:
--no body in request-% 
+-no body in request-%
 ```
 
 ### 현재 쿠버네티스의 상태를 조회
@@ -297,8 +297,8 @@ replicaset.apps/hello-node-7567d9fdc9   1         1         1       87s
 ```
 
 ## 직접 컨테이너로 빌드한 어플리케이션 배포
-### EKS 클러스터및 노드그룹을 세팅합니다. 
-동일한 작업이기 때문에 스크립트로 만들어서 수행하고 완료되기를 기다립니다. 
+### EKS 클러스터및 노드그룹을 세팅합니다.
+동일한 작업이기 때문에 스크립트로 만들어서 수행하고 완료되기를 기다립니다.
 ```
 #!/bin/bash
 NAME=$1
@@ -312,7 +312,7 @@ eksctl create cluster \
 --node-type t2.small \
 --nodes 2 \
 --nodes-min 2 \
---nodes-max 2 
+--nodes-max 2
 
 # 생성된 EKS 클러스터의 쿠버네티스로 kubectl context세팅
 aws eks --region $REGION update-kubeconfig --name $NAME
@@ -332,7 +332,7 @@ AWS의 컨테이너 저장소로는 **Amazon Elastic Container Registry**(ECR서
 
 컨테이너를 저장할 ECR 레포지토리를 생성합니다.
 ```
-➜  eks aws ecr create-repository \   
+➜  eks aws ecr create-repository \
 > --repository-name test-eks
 
 {
@@ -353,7 +353,7 @@ AWS의 컨테이너 저장소로는 **Amazon Elastic Container Registry**(ECR서
 }
 ```
 
-AWS ECR 의 Private 저장소로 푸시하기 위해서 인증 토큰을 받고 도커 클라이언트에 레지스트리를 인증합니다. 
+AWS ECR 의 Private 저장소로 푸시하기 위해서 인증 토큰을 받고 도커 클라이언트에 레지스트리를 인증합니다.
 ```
 ➜  basic aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 771148603266.dkr.ecr.ap-northeast-2.amazonaws.com
 Login Succeeded
@@ -413,20 +413,20 @@ CMD [ "go", "run", "main.go" ]
 AWS ECR에 생성한 레포지토리 이름과 일치하게 tag를 지정하여 빌드합니다.  그리고 ECR의 타겟 이미지 정보와 태그를 연결하고 푸시합니다.
 ```
 # 빌드
-➜  basic docker build -t test-eks 
+➜  basic docker build -t test-eks
 # ECR 레포지토리의 이미미지와 태깅으로 연결
 ➜  basic docker tag test-eks:latest 771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks:latest
 # 푸시
 ➜  basic docker push 771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks:latest
 
 The push refers to repository [771148603266.dkr.ecr.ap-northeast-2.amazonaws.com/test-eks]
-64c37ddcbb2d: Pushed 
-15eb9ba7eb67: Pushed 
-c4fe7bed7430: Pushed 
-40ab4c9c8714: Pushed 
-0ded06e76c58: Pushed 
-ad88393a9d2d: Pushed 
-07d3c46c9599: Pushed 
+64c37ddcbb2d: Pushed
+15eb9ba7eb67: Pushed
+c4fe7bed7430: Pushed
+40ab4c9c8714: Pushed
+0ded06e76c58: Pushed
+ad88393a9d2d: Pushed
+07d3c46c9599: Pushed
 latest: digest: sha256:42479bfb5d0a1e60ea712ae56df444269ce4ba3b28cacaa6c9caf124f0938b6a size: 1779
 ```
 
@@ -464,7 +464,7 @@ spec:
 ### 배포
 Kubectl 명령을 사용해서 쿠버네티스 API로 배포를 요청합니다.
 ```
-➜  deployment kubectl apply -f basic_deployment.yaml 
+➜  deployment kubectl apply -f basic_deployment.yaml
 deployment.apps/basic created
 ➜  deployment kubectl expose deployment  basic --type=LoadBalancer --port=80 --target-port=8090
 service/basic exposed
@@ -472,13 +472,13 @@ service/basic exposed
 ```
 
 -> 쿠버네티스 버전을 로컬 미니쿠베랑 맞춰서 한번 해보자
-로컬 미니쿠베는 되는데 클라우드 최신에서는 안되니까. 
+로컬 미니쿠베는 되는데 클라우드 최신에서는 안되니까.
 -> 비용 때문에 여기가지만하고 그라파나랑 프로메테우스는 미니쿠베에 세팅해서 테스트 하는것도 방법
 
 커맨드를 도커파일이 아니라 쿠버네티스에서 불러와서 실행하게
 https://cloud.google.com/kubernetes-engine/docs/quickstart
 #todo
-AWS EKS 에 이슈가 있어서 배포가 안되는걸로 생각되서 일단 다음 진행 
+AWS EKS 에 이슈가 있어서 배포가 안되는걸로 생각되서 일단 다음 진행
 
 ## 지속 통합 및 지속 배포 (CI/CD)
 어플리케이션이 배포되는 목적지는 쿠버네티스지만 그 과정에서 작업 내용에 대한 지속 통합과 지속 배포 플랜을 구성하는것이 필요합니다. GitOps 방식을 채택하여 지속 통합은 Git으로 통합하는 정의를 기반으로 지속적인 배포를 진행합니다.
@@ -486,18 +486,18 @@ AWS EKS 에 이슈가 있어서 배포가 안되는걸로 생각되서 일단 �
 ### GitHub를 활용한 지속 통합 CI
 Git의 대표적인 제공자인 Github 레포지토리를 사용해서 작업 코드를 통합합니다. 또한,GitHub Action 서비스를 활용하여 코드에서 컨테이너 이미지로 빌드 및 컨테이너를 적재합니다.
 
-1. 코드 작업 
+1. 코드 작업
 2. 깃 푸시
 3. 컨테이너 이미지 빌드및 푸시
 
 ### Helm을 활용한 지속 배포 CD
-통합된 작업물을 가지고 지속적으로 신규 배포를 진행합니다. 
-지속 배포시에는 배포 환경에 따라 어플리케이션의 구성 및 설정이 변경될 수 있기 대문에 쿠버네티스 패키지 매니저인 헬름을 사용하여 버전 및 환경 구성을 관리합니다. 
+통합된 작업물을 가지고 지속적으로 신규 배포를 진행합니다.
+지속 배포시에는 배포 환경에 따라 어플리케이션의 구성 및 설정이 변경될 수 있기 대문에 쿠버네티스 패키지 매니저인 헬름을 사용하여 버전 및 환경 구성을 관리합니다.
 
 1. 배포 환경에 따라 설정을 변경하여 배포
 
 ## Helm으로 어플리케이션 배포
-> 비용의 문제로 로컬 경량 쿠버네티스 minikube로 대체합니다.  
+> 비용의 문제로 로컬 경량 쿠버네티스 minikube로 대체합니다.
 
 
 ```
@@ -508,7 +508,7 @@ helm install prometheus-community/prometheus --generate-name
 
 
 
-➜  eks watch kubectl get all            
+➜  eks watch kubectl get all
 
 Every 2.0s: kubectl get all                                                                                                                                                             hojinjangs-MacBook-Air.local: Tue Mar  8 00:31:44 2022
 
@@ -583,10 +583,10 @@ replicaset.apps/prometheus-1646666941-server-85744cdff9               1         
 🏃  Starting tunnel for service istio-ingressgateway.
 ```
 
-> Tip.  
-> Networking and Connectivity Commands:  
->   service        Returns a URL to connect to a service  
->   tunnel         Connect to LoadBalancer services  
+> Tip.
+> Networking and Connectivity Commands:
+>   service        Returns a URL to connect to a service
+>   tunnel         Connect to LoadBalancer services
 
 
 
