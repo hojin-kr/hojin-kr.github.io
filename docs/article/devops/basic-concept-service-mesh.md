@@ -10,7 +10,7 @@ Micro Service Architecture에서 다수의 서비스가 망사구조로 구성�
 
 ## 서비스 망사 구조 → Service Mesh
 
-![](/assets/img/3FA0C899-E390-4422-890E-A20D3E31DDE7.png)￼
+<!-- ![](/assets/img/3FA0C899-E390-4422-890E-A20D3E31DDE7.png)￼ -->
 
 ## 목적
 서비스 메시 구조의 모든 부분에 Proxy를 배치하여 서비스간 통신 모든 부분에 대해 관리, 로깅하며 배포관리, 모니터링, 보안성 향상에 기여함
@@ -35,12 +35,12 @@ Anthos는 관리 형태에 따라 세가지 타입을 제공함
 - In-cluster control plane
 클러스터 내부에 Control Plane을 위치해서 사용
 
-![](/assets/img/C1D37322-D59C-47E1-A4DA-DFD2E651F467.png)￼
+<!-- ![](/assets/img/C1D37322-D59C-47E1-A4DA-DFD2E651F467.png)￼ -->
 
 - Managed Anthos Service Mesh
 GCP에서 제공하는 완전 관리형 Anthos Service Mesh 로 구글에서 업데이트, 스케일링, 보안에 대해 관리해주며, 유저 관리를 최소로함
 
-![](/assets/img/51A641C3-1AF1-4BF8-945F-FBD5932C198C.png)￼￼
+<!-- ![](/assets/img/51A641C3-1AF1-4BF8-945F-FBD5932C198C.png)￼￼ -->
 
 - Include Compute Engine VMs in the service mesh
 GKE 환경이 아닌 GCP Managed Instance Groups(MIGs)에 대해 Anthos Service Mesh를 사용 할 수 있도록 하는 GCP preview기능으로 현재는 다루지 않아도 될것으로 생각됨
