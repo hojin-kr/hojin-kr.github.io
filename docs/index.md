@@ -8,7 +8,7 @@ hero:
   tagline: "in Korea"
   actions:
     - theme: brand
-      text: 이력 사항
+      text: 경력
       link: /history
     - theme: alt
       text: GitHub
