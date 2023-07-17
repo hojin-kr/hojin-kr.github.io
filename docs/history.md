@@ -5,17 +5,32 @@ layout: doc
 ## Contact
 [Linkedin](https://www.linkedin.com/in/호진-장-221aa3198)
 
-## WEMADE PLAY (SundayToz)
-DevOps팀
+## WEMADE PLAY (SundayToz) 2020.02 ~        
+소속팀 : DevOps(서버 운영 및 개발), TentPole (기반 기술 개발 및 선진 기술 연구)
+
 - AWS, GCP 클라우드 인프라 아키텍쳐 구성 및 유지보수
+    - 약 5천만 유저 데이터베이스 유지 관리
+    - 일간 액티브 유저 10만 이상 웹 서버 운영
+    - TPS 1,000 이상의 서비스 구성 및 운영
+       
 - 데이터레이크 구성 및 비즈니스 인텔리전트(BI) 툴 Zeppelin 운영
 - PHP 게임 서버 개발
 - 서버 운영 유저 문의 (CS) 대응
-- Legacy 환경의 현대화 작업
-      - 모놀로틱 서버 인프라의 Container 기반의 Full Managed Serverless 전환 및 쿠버네티스 적용
+- Legacy 환경의 현대화 작업  
+    - 모놀로틱 서버 인프라의 Container 기반의 Full Managed Serverless 전환 및 쿠버네티스 적용
 - 멀티 플랫폼 클라우드 환경 구성 및 연구
 - 로그기반 데이터를 통한 이상 탐지 및 알람 구성
 
+## 운영 아키텍처
+### GCP
+- GKE (Full Game Server)
+![FullGameServerGCP-2023-07-18-0045](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/d097a391-0337-4815-83bd-733b72ee77f0)
+- CloudRun (CloudRun - VPC Connector - Memorystore - Stackdriver - logbase metric - alert & monitoring)
+- Instance Group Compute Engine (Simple Web Server)
+
+### AWS
+- EC2 AMI Base Instance Group Web Server
+- S3 Static Web Service
 
 
 ## 참여한 게임 프로젝트
