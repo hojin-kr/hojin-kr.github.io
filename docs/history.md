@@ -25,7 +25,12 @@ layout: doc
 ## 운영 아키텍처
 ### GCP
 - GKE (Full Game Server)
-![FullGameServerGCP-2023-07-18-0045](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/d097a391-0337-4815-83bd-733b72ee77f0)
+![FullGameServerGCP-2023-07-18-0045](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/d097a391-0337-4815-83bd-733b72ee77f0)   
+GCP의 서비스를 사용하는 서버 아키텍처.
+정적 자원의 경우, GCS로 제공되며, CDN과 부하의 균형을 맞추고, 에지 로케이션 서비스로 적은 지연시간을 제공합니다.
+게임 서버는 GKE로 매니지드되는 K8S를 통해 부하를 배포하고 다양한 배포 정책을 지원합니다.
+또한, Memorystore memcache는 대분의 Get 요청에 대한 낮은 대기 시간을 보장하고 데이터베이스에 대한 부하의 균형을 맞추기 위해 각 데이터베이스의 전면에 배치됩니다.
+
 - CloudRun (CloudRun - VPC Connector - Memorystore - Stackdriver - logbase metric - alert & monitoring)
 - Instance Group Compute Engine (Simple Web Server)
 
