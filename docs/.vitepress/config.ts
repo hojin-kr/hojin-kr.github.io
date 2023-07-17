@@ -16,19 +16,19 @@ export default defineConfig({
         text: 'Study',
         items: [
           { text: 'Go Grpc GCP Knative', link: '/article/go-grpc-gcp-knative'},
-          {
-            text: 'Kubernetes Series',
-            collapsed: true,
-            items: [
-              { text: '쿠버네티스란 무엇인가', link: '/article/kubernetes-series-0' },
-              { text: '도커와 컨테이너', link: '/article/kubernetes-series-1' },
-              { text: '쿠버네티스를 구성하는 요소', link: '/article/kubernetes-series-2' },
-              { text: '개발환경 세팅', link: '/article/kubernetes-series-3' },
-              { text: '배포 & 조사 & 노출 & 스케일링 & 업데이트', link: '/article/kubernetes-series-4' },
-              { text: '내 앱 빌드 & 배포', link: '/article/kubernetes-series-5' },
-              { text: 'Helm', link: '/article/kubernetes-series-6' },
-            ]
-          },
+          // {
+          //   text: 'Kubernetes Series',
+          //   collapsed: true,
+          //   items: [
+          //     { text: '쿠버네티스란 무엇인가', link: '/article/kubernetes-series-0' },
+          //     { text: '도커와 컨테이너', link: '/article/kubernetes-series-1' },
+          //     { text: '쿠버네티스를 구성하는 요소', link: '/article/kubernetes-series-2' },
+          //     { text: '개발환경 세팅', link: '/article/kubernetes-series-3' },
+          //     { text: '배포 & 조사 & 노출 & 스케일링 & 업데이트', link: '/article/kubernetes-series-4' },
+          //     { text: '내 앱 빌드 & 배포', link: '/article/kubernetes-series-5' },
+          //     { text: 'Helm', link: '/article/kubernetes-series-6' },
+          //   ]
+          // },
           {
             text: 'ETC',
             collapsed: true,
