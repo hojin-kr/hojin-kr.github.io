@@ -47,7 +47,7 @@ layout: doc
     
 ![image](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/278d248e-437a-4b8f-8331-85b07cebae01)
     
-- 유메이로가든 (러브레시피,pastelgarden,yumeirogarden) https://url.tl-dr.in/yumeiro
+- 유메이로가든 (러브레시피,pastelgarden,yumeirogarden,Lovey-Buddy) https://url.tl-dr.in/yumeiro
     - 신규 개발 및 런칭
     - 실시간 3D SNG    
   
@@ -65,12 +65,13 @@ The Professional Cloud DevOps Engineer exam assesses your ability to:
     - Build and implement CI/CD pipelines for a service   
     - Implement service monitoring strategies  
 
-![abu5vp1m](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/2af5a620-a9bb-4497-bbe8-44867c9c9dd7)
-![abu5vp1m_1689379949550_badge](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/d64e5e62-edb0-4854-821e-4e0619d53592)
-
+![abu5vp1m](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/2af5a620-a9bb-4497-bbe8-44867c9c9dd7)   
+![abu5vp1m_1689379949550_badge](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/d64e5e62-edb0-4854-821e-4e0619d53592)   
+   
 https://www.credential.net/d63ce8d4-ea49-4e43-a945-0d37497b3931
 
 ## 활동
-![image](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/98700af7-55aa-4f30-b037-344cb2d19b3d)
+![image](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/98700af7-55aa-4f30-b037-344cb2d19b3d)   
+   
 https://www.credential.net/b322cea5-0271-4ac9-a98c-7120a3aa53fd
 
