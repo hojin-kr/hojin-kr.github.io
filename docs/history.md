@@ -38,6 +38,15 @@ GCP의 서비스를 사용하는 서버 아키텍처.
 - EC2 AMI Base Instance Group Web Server
 - S3 Static Web Service
 
+### 사내 연구 및 발행 아티클
+- GitHub Action에 대한 기초 및 CI/CD 샘플
+- 복수의 EC2 머신을 사용한 신규 서비스 로드 테스트
+- docker desktop에서의 rancher desktop 전환
+- k8s에 대해서 기본 개념과 특성
+- Kubernetes 배포 툴(Helm & Kustomazation) 테스트 및 차이점
+- GCP에서의 InstanceGrup을 사용한 서비스 구축
+- AWS DynamoDB의 속성 크기와 성능 관계 분석 및 시스템 개선
+
 
 ## 참여한 게임 프로젝트
 - 애니팡1 https://url.tl-dr.in/anipang
