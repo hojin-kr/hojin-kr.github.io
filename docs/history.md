@@ -3,7 +3,7 @@ layout: doc
 ---
 # History
 ## Contact
-[Linkedin](https://www.linkedin.com/in/호진-장-221aa3198)
+[Linkedin](https://www.linkedin.com/in/hojin-jang-221aa3198)
 
 ## 경력
 ### WEMADE PLAY (SundayToz) 2020.02 ~        
