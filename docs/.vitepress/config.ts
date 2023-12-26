@@ -15,6 +15,7 @@ export default defineConfig({
       {
         text: 'Study',
         items: [
+          { text :'알고리즘', link: '/article/codility'},
           { text: 'Go Grpc GCP Knative', link: '/article/go-grpc-gcp-knative'},
           // {
           //   text: 'Kubernetes Series',
