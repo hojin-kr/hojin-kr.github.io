@@ -336,3 +336,55 @@ func Solution(A []int) int {
     return dominator
 }
 ```
+# 프로그래머스
+## 디펜스 게임
+우선순위 큐를 사용한 문제
+무적권을 사용하기 위한 최적의 조건을 찾는데, 지나온 것중 가장 큰 값을 사용하는게 필요함, 가장 큰 값을 위해 sort를 하여도 값은 찾을 수 있지만 성능을 위해서 삽입 시에 부터 우선순위에 따라 관리되는 우선순위 큐를 활용
+*해법을 참고하여 풀이
+```
+import "container/heap"
+
+// An IntHeap is a min-heap of ints.
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] > h[j] }
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x interface{}) {
+	*h = append(*h, x.(int))
+}
+
+func (h *IntHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+func solution(n int, k int, enemy []int) int {
+    var attacks *IntHeap = &IntHeap{}
+	heap.Init(attacks)
+    hp := n
+    defen := k
+    // 지나온것중 최고 값을 먼저 빼는 룰이니까 우선순위 큐 이구나
+    for wave, attack := range enemy {
+        heap.Push(attacks, attack)
+        hp -= attack
+        if hp < 0 {
+            if defen > 0 && attacks.Len() > 0 {
+                var _attack int = heap.Pop(attacks).(int)
+                hp += _attack
+                defen--
+            } else {
+                return wave
+            }            
+        } 
+    }
+    return len(enemy)
+}
+```
+
+
+
