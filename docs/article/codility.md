@@ -1,3 +1,40 @@
+# Daily Question LeetCode
+
+```
+387. First Unique Character in a String
+Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+```
+## Intuition
+<!-- Describe your first thoughts on how to solve this problem. -->
+적은 복잡도로 유니크하며 처음인 문자를 구하는게 포인트
+## Approach
+<!-- Describe your approach to solving the problem. -->
+1. 출현횟수를 map으로 바로 히트해서 찾을 수 있도록
+2. 문자열을 순회하며 유니크하며 첫 출현을 확인
+
+## Code
+```
+func firstUniqChar(s string) int {
+    var charMap = make(map[int]int, len(s))
+    for _, v := range s {
+        charMap[int(v)]++
+    }
+
+    ret := -1
+    for k, v := range s {
+        if charMap[int(v)] == 1 {
+            ret = k
+            break
+        }
+    }
+    return ret
+}
+```
+![image](https://github.com/hojin-kr/hojin-kr.github.io/assets/22079767/599e3a56-a3ed-4301-a075-26da3cc0f543)
+
+
+----------
+
 # Codility leasons
 
 ## CyclicRotation
