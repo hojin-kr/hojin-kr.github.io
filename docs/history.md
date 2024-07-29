@@ -100,20 +100,23 @@ GCP의 서비스를 사용하는 서버 아키텍처.
     - EC2 배포 파이프라인 구성
 
 
-## 재밌는 프로젝트
+## 재밌는 개인 프로젝트
 [Go-GRPC-GCP-AI](https://github.com/tldr-development/go-grpc)
 - Go랭과 GRPC 그리고 MSA를 지향하는 아키텍처를 구성해보고 싶어서 시작한 프로젝트
+- 각 서비스는 하나의 Container로 빌드되며 CloudRun으로 배포
+- 데이터는 Datastore로 모든것을 커버한다.
+- CloudRun - Datastore 구성을 가져가는 이유는 기본 유지 비용이 들어가지 않는 것과 뛰어난 확장 가능성
 - GCP 관리형 LLM 서비스인 Vertex AI Gemini 사용
 - 로케일에 대한 처리와 언어 지원을 위해 클라이언트측에 많은 기능을 넣고 Prompt또한 클라이언트에서 전달받아 사용하는 형태로 작업하여 서버는 받아 쓴다.
 - gemini-1.0-pro-001를 사용하며 구현부는 [여기](https://github.com/tldr-development/go-grpc/blob/94f70bf4f9c7212f1bd6e1105f319396ec0246c4/inspire/inspire.go#L229C1-L230C1)
 - 이때는 Go랭 작업에 있어서 코파일럿의 도움을 많이 받았다.
-- [클라이언트](https://apps.apple.com/kr/app/emotioncare/id6483000351?l=en-GB)
 - [저장소](https://github.com/tldr-development/go-grpc)
 
 [LLM 인터뷰 질문 생성](https://i.tl-dr.in)
 - GCP의 관리형 LLM 서비스 초기 VertexAI의 PaLM 2로 개발
 - 직군에 따른 인터뷰 예상 질문과 답변을 생성
-- LangChain이나 Rag의 개념 없이 단순하게 LLM을 목적에 맞춰 사용
+- LangChain이나 Rag의 개념 없이 단순하게 LLM을 단순하게 사용
+- 이때는 랭체인 존재도 몰랐다.
 - [저장소](https://github.com/hojin-kr/vertexai_interview)
 
 [단축URL](https://url.tl-dr.in)
@@ -129,8 +132,9 @@ GCP의 서비스를 사용하는 서버 아키텍처.
 - 프론트 기술이며 깃 페이지로 서비스
 - [저장소](https://hojin-kr.github.io/timestampConverter/)
 
-
-
+[안드로이드 빌드 자동화](https://github.com/hojin-kr/builder-unity-ci)
+- 친구들과 안드로이드 앱 개발할 때 빌드서버를 무료로 쓰기 위해 깃 액션에 퍼블릭으로 구성
+- 외부의 유니티 프로젝트 저장소에서 Pull 받아 빌드만 시키는게 컨셉이며, 트리거에 의해 자동으로 빌드및 배포되도록 구성
 
 
 ## Certification
