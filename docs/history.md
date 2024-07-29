@@ -100,6 +100,38 @@ GCP의 서비스를 사용하는 서버 아키텍처.
     - EC2 배포 파이프라인 구성
 
 
+## 재밌는 프로젝트
+[Go-GRPC-GCP-AI](https://github.com/tldr-development/go-grpc)
+- Go랭과 GRPC 그리고 MSA를 지향하는 아키텍처를 구성해보고 싶어서 시작한 프로젝트
+- GCP 관리형 LLM 서비스인 Vertex AI Gemini 사용
+- 로케일에 대한 처리와 언어 지원을 위해 클라이언트측에 많은 기능을 넣고 Prompt또한 클라이언트에서 전달받아 사용하는 형태로 작업하여 서버는 받아 쓴다.
+- gemini-1.0-pro-001를 사용하며 구현부는 [여기](https://github.com/tldr-development/go-grpc/blob/94f70bf4f9c7212f1bd6e1105f319396ec0246c4/inspire/inspire.go#L229C1-L230C1)
+- 이때는 Go랭 작업에 있어서 코파일럿의 도움을 많이 받았다.
+- [클라이언트](https://apps.apple.com/kr/app/emotioncare/id6483000351?l=en-GB)
+- [저장소](https://github.com/tldr-development/go-grpc)
+
+[LLM 인터뷰 질문 생성](https://i.tl-dr.in)
+- GCP의 관리형 LLM 서비스 초기 VertexAI의 PaLM 2로 개발
+- 직군에 따른 인터뷰 예상 질문과 답변을 생성
+- LangChain이나 Rag의 개념 없이 단순하게 LLM을 목적에 맞춰 사용
+- [저장소](https://github.com/hojin-kr/vertexai_interview)
+
+[단축URL](https://url.tl-dr.in)
+- 단축 URL 서비스가 계속 사라지고 있어서 내꺼 가지려고 만든 프로젝트
+- 운영 비용이 들지 않을것이 주요 컨셉
+- GCP AppEngin, DataStore로 구성하여 기본 할당량에서는 유지비용이 발생하지 않도록 구성
+- 또한, PHP와 GCP AppEngine 조합으로 얼마나 서비스 하나를 쉽고 빠르게 개발 할 수 있는지 보고 싶었다.
+- 실제로 필요한거만 빠르게 개발했고, 핵심 기능 문제 없이 잘 작동한다.
+- [저장소](https://github.com/hojin-kr/url)
+
+[타임스탬프 컨버터](https://hojin-kr.github.io/timestampConverter/)
+- 서버 작업을 하다보면 유닉스 타임스탬프의 데이트 변환이나 데이트의 타임스탬프 변환이 필요한데, 편리한 툴이 없어 만들었다.
+- 프론트 기술이며 깃 페이지로 서비스
+- [저장소](https://hojin-kr.github.io/timestampConverter/)
+
+
+
+
 
 ## Certification
 ### Professional Cloud DevOps Engineer
