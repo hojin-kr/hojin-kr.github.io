@@ -137,6 +137,9 @@ GCP의 서비스를 사용하는 서버 아키텍처.
 - 외부의 유니티 프로젝트 저장소에서 Pull 받아 빌드만 시키는게 컨셉이며, 트리거에 의해 자동으로 빌드및 배포되도록 구성
 
 [공부중인 LangChain을 활용한 LLM 사용 능력 습득](https://github.com/hojin-kr/LangChain)
+- LLM을 편리하게 사용할 수 있도록 개발된 LangChain에 대한 스터디
+- 기본적으로 API로 퍼블릭 클라우드 인프라의 LLM에 구조화된 Prompt를 사용하기 위한 기반과 RAG, Vector-Store를 활용한 기능 사용 습득을 위함
+
 
 ## Certification
 ### Professional Cloud DevOps Engineer
