@@ -30,25 +30,25 @@ CEO 키노트는 주로 생성형 AI 기술과 관련되어 있었습니다.
    - 지라 티켓 생성이나 정보 요청 기능 제공.
 
 - Amazon Generative AI 3 layer stack
-  ![image.png](aws-reinvent-2023/image%202.png)
+  ![image.png](aws-reinvent-2023/image2.png)
 - 신규 공개한 AI 서비스
   - [Amazon Bedrock](https://aws.amazon.com/ko/bedrock/): 개인화된 LLM 제공 서비스
   - [Amazon Q](https://aws.amazon.com/ko/quicksight/q/): AWS 리소스 기반 대화형 AI 시스템
 
-![image.png](aws-reinvent-2023/image%203.png)
+![image.png](aws-reinvent-2023/image3.png)
 
 ## 엄청난 규모의 세션장
 
 7개 호텔 사이의 세션 배치로 원하는 세션을 위치에 맞춰 계획해야 함.
 
-![image.png](aws-reinvent-2023/image%204.png)
+![image.png](aws-reinvent-2023/image4.png)
 
 ## 세션 분위기
 
 질의응답이 가능한 화이트보드 세션과 일반적인 강의로 나뉨
 
 화이트보드 세션  
-![image.png](aws-reinvent-2023/image%205.png)
+![image.png](aws-reinvent-2023/image5.png)
 
 ## 인상깊은 세션
 
@@ -63,10 +63,10 @@ CEO 키노트는 주로 생성형 AI 기술과 관련되어 있었습니다.
    - API 게이트웨이를 통해 지표 추출 및 확인.
    - "콩 게이트웨이" 언급.
 
-![image.png](aws-reinvent-2023/image%206.png)
+![image.png](aws-reinvent-2023/image6.png)
 
 데브옵스는 팀에 유동적으로 붙는다  
-![image.png](aws-reinvent-2023/image%207.png)
+![image.png](aws-reinvent-2023/image7.png)
 
 다이나모DB를 사용
 
@@ -75,13 +75,13 @@ CEO 키노트는 주로 생성형 AI 기술과 관련되어 있었습니다.
 활발하고 자유로운 분위기로 다양한 경험 확보 가능
 
 엑스포 전경  
-![image.png](aws-reinvent-2023/image%208.png)
+![image.png](aws-reinvent-2023/image8.png)
 
 AWS IOT와 결합한 제품 시연  
-![image.png](aws-reinvent-2023/image%209.png)
+![image.png](aws-reinvent-2023/image9.png)
 
 라스베가스 대형 전광판에 나오는 테크 업체 광고  
-![image.png](aws-reinvent-2023/image%2010.png)
+![image.png](aws-reinvent-2023/image10.png)
 
 
 KeyWords: Conference  

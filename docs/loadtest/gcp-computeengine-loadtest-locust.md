@@ -30,11 +30,11 @@
 
 ![서버 성능 그래프 1](gcp-computeengine-loadtest-locust/image.png)
 
-![서버 성능 그래프 2](gcp-computeengine-loadtest-locust/image%201.png)
+![서버 성능 그래프 2](gcp-computeengine-loadtest-locust/image1.png)
 
-![서버 성능 그래프 3](gcp-computeengine-loadtest-locust/image%202.png)
+![서버 성능 그래프 3](gcp-computeengine-loadtest-locust/image2.png)
 
-![서버 성능 그래프 4](gcp-computeengine-loadtest-locust/image%203.png)
+![서버 성능 그래프 4](gcp-computeengine-loadtest-locust/image3.png)
 
 ## Locust 테스트 구성
 
@@ -43,7 +43,7 @@
 1. **Locust Master**: 하나의 Compute Engine에서 Locust 이미지를 Docker로 실행합니다.
 2. **Locust Worker**: GCP 인스턴스 그룹으로 구성하여 스케일링을 통해 워커 수를 조절합니다.
 
-![Locust 테스트 환경](gcp-computeengine-loadtest-locust/image%204.png)
+![Locust 테스트 환경](gcp-computeengine-loadtest-locust/image4.png)
 
 ### 테스트 코드
 
@@ -102,12 +102,12 @@ CMD ["-f", "locust.py", "--worker", "--master-host", "locust-master"]
 
 ### 세팅 후 Locust에 잡힌 Worker
 
-![Locust 워커 잡힘 화면](gcp-computeengine-loadtest-locust/image%205.png)
+![Locust 워커 잡힘 화면](gcp-computeengine-loadtest-locust/image5.png)
 
 ### 부하 세팅
 
 1초당 증가할 유저 수를 Ramp Up 설정으로 조정합니다.
 
-![부하 세팅](gcp-computeengine-loadtest-locust/image%206.png)
+![부하 세팅](gcp-computeengine-loadtest-locust/image6.png)
 
 KeyWords: LoadTest, Loucust Priority: 300 Type: LoadTest
