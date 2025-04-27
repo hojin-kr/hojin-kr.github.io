@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      pages: write
+      pages: write-all
       id-token: write
     environment:
       name: github-pages
