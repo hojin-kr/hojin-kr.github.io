@@ -21,8 +21,8 @@ export default defineConfig({
       {
         text: 'DevOps',
         items: [
-          { text: 'AWS CodePipeline 배포 구성', link: '/devops/EC2 기반 아키텍처 AWS CodePipeline 배포 구성 1e09d832d09a800893e4f30a6df5f20b'},
-          { text: 'EC2 디스크풀 이슈 확인 및 처리', link: '/devops/EC2 디스크풀 이슈 확인 및 처리 1e09d832d09a80e28c8aeec453f73317' },
+          { text: 'AWS CodePipeline 배포 구성', link: '/devops/aws-codepipeline-deploy-to-ec2'},
+          { text: 'EC2 디스크풀 이슈 확인 및 처리', link: '/devops/aws-ec2-instance-diskfull' },
         ]
       },      
       {
