@@ -7,15 +7,15 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Overview', link: '/overview' },
-      { text: 'DevOps', link: '/devops/' }
+      { text: '개요', link: '/index' },
+      { text: 'Resume', link: '/resume' }
     ],
 
     sidebar: [
       {
-        text: 'Overview',
+        text: '개요',
         items: [
-          { text: 'Overview', link: '/overview' }
+          { text: '개요', link: '/index' }
         ]
       },
       {
@@ -24,27 +24,29 @@ export default defineConfig({
           { text: 'AWS CodePipeline 배포 구성', link: '/devops/aws-codepipeline-deploy-to-ec2'},
           { text: 'EC2 디스크풀 이슈 확인 및 처리', link: '/devops/aws-ec2-instance-diskfull' },
         ]
-      },      
+      },
+      {
+        text: 'DataLake',
+        items: [
+          { text: 'GCP Datastore를 이용한 BigQuery로의 데이터 수집', link: '/datalake/gcp-datastore-to-bigquery-dataflow' },
+        ]
+
+      },
       {
         text: 'LoadTesting',
         items: [
-          { text: 'LoadTesting', link: '/loadtesting/' },
-          { text: 'K6', link: '/loadtesting/k6' }
+          { text: '서버 부하 테스트: Multi GCP Compute Engine 및 Locust를 활용', link: '/loadtest/gcp-computeengine-loadtest-locust' }
         ]
       },
       {
         text: 'R&D',
         items: [
-          { text: 'Monitoring', link: '/monitoring/' },
-          { text: 'Prometheus', link: '/monitoring/prometheus' },
-          { text: 'Grafana', link: '/monitoring/grafana' }
         ]
       },
       {
         text: 'Blog',
         items: [
-          { text: 'CI/CD', link: '/ci-cd/' },
-          { text: 'GitHub Action', link: '/ci-cd/github-action' }
+          { text: 'AWS re:Invent 2023', link: '/blog/aws-reinvent-2023' }
         ]
       }
     ],

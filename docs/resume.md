@@ -1,7 +1,6 @@
 ---
 layout: doc
 ---
-# Overview
 ## Contact
 [Linkedin](https://www.linkedin.com/in/hojin93)
 
