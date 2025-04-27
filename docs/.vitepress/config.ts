@@ -7,42 +7,46 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '경력', link: '/history' },
-      { text: '스터디', link: '/article/study/' },
+      { text: 'Overview', link: '/overview' },
+      { text: 'DevOps', link: '/devops/' }
     ],
 
     sidebar: [
       {
-        text: 'Study',
+        text: 'Overview',
         items: [
-          { text :'데일리 알고리즘', link: '/article/daily_algorithm'},
-          { text: 'Go Grpc GCP Knative', link: '/article/go-grpc-gcp-knative'},
-          // {
-          //   text: 'Kubernetes Series',
-          //   collapsed: true,
-          //   items: [
-          //     { text: '쿠버네티스란 무엇인가', link: '/article/kubernetes-series-0' },
-          //     { text: '도커와 컨테이너', link: '/article/kubernetes-series-1' },
-          //     { text: '쿠버네티스를 구성하는 요소', link: '/article/kubernetes-series-2' },
-          //     { text: '개발환경 세팅', link: '/article/kubernetes-series-3' },
-          //     { text: '배포 & 조사 & 노출 & 스케일링 & 업데이트', link: '/article/kubernetes-series-4' },
-          //     { text: '내 앱 빌드 & 배포', link: '/article/kubernetes-series-5' },
-          //     { text: 'Helm', link: '/article/kubernetes-series-6' },
-          //   ]
-          // },
-          {
-            text: 'ETC',
-            collapsed: true,
-            items: [
-              { text: 'Kubernetes Examples', link: '/article/kubernetes-examples' },
-              { text: 'Kubernetes Sample AWS EKS', link: '/article/kubernetes-sample-aws-eks' },
-              { text: 'AWS EC2 고가용성 아키텍처', link: '/article/aws-ec2-ha-architecture' },
-              { text: 'Unity Build in Github Action', link: '/article/unity-build-automation-in-githubaction' },
-              { text: 'GitHub Action, Artifact remove automation', link: '/article/github-action-tip-artifact-remove-automation' },
-            ]
-          }
+          { text: 'Overview', link: '/overview' }
         ]
       },
+      {
+        text: 'DevOps',
+        items: [
+          { text: 'AWS CodePipeline 배포 구성', link: '/devops/EC2 기반 아키텍처 AWS CodePipeline 배포 구성 1e09d832d09a800893e4f30a6df5f20b'},
+          { text: 'EC2 디스크풀 이슈 확인 및 처리', link: '/devops/EC2 디스크풀 이슈 확인 및 처리 1e09d832d09a80e28c8aeec453f73317' },
+        ]
+      },      
+      {
+        text: 'LoadTesting',
+        items: [
+          { text: 'LoadTesting', link: '/loadtesting/' },
+          { text: 'K6', link: '/loadtesting/k6' }
+        ]
+      },
+      {
+        text: 'R&D',
+        items: [
+          { text: 'Monitoring', link: '/monitoring/' },
+          { text: 'Prometheus', link: '/monitoring/prometheus' },
+          { text: 'Grafana', link: '/monitoring/grafana' }
+        ]
+      },
+      {
+        text: 'Blog',
+        items: [
+          { text: 'CI/CD', link: '/ci-cd/' },
+          { text: 'GitHub Action', link: '/ci-cd/github-action' }
+        ]
+      }
     ],
 
     socialLinks: [

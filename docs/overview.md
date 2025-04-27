@@ -1,9 +1,9 @@
 ---
 layout: doc
 ---
-# History
+# Overview
 ## Contact
-[Linkedin](https://www.linkedin.com/in/hojin-jang-221aa3198)
+[Linkedin](https://www.linkedin.com/in/hojin93)
 
 ## 기여할 수 있는 역할
 
