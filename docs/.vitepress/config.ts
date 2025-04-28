@@ -32,6 +32,7 @@ export default defineConfig({
         items: [
           { text: '- GCP Datastore를 이용한 BigQuery로의 데이터 수집', link: '/datalake/gcp-datastore-to-bigquery-dataflow' },
           { text: '- GCP Dataflow의 데이터 배치 처리', link: '/datalake/gcp-dataflow-batch-processing' },
+          { text: '- GCP GKE 데이터 레이크 구성', link: '/datalake/gcp-gke-datalake' },
         ]
 
       },
