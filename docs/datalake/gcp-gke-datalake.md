@@ -40,13 +40,9 @@ GCP GKE 환경에서 생성되는 로그와 NoSQL 데이터를 BigQuery에 저�
 
 2. **Stackdriver를 통해 로그 확인**
    - Stackdriver Logs Explorer를 활용하여 로그를 조회하고 모니터링할 수 있습니다.
-   - ![image.png](gcp-gke-datalake/image.png)
-   - ![image.png](gcp-gke-datalake/image1.png)
 
 3. **BigQuery로 라우팅**
    - 특정 필터를 적용하여 관심 있는 로그만 BigQuery로 라우팅하여 SQL을 통해 분석 가능.
-   - ![image.png](gcp-gke-datalake/image2.png)
-   - ![image.png](gcp-gke-datalake/image3.png)
 
 ### 사용자 데이터 (NoSQL) 데이터 처리
 
@@ -89,15 +85,10 @@ GCP GKE 환경에서 생성되는 로그와 NoSQL 데이터를 BigQuery에 저�
    }
    ```
 
-   ![image.png](gcp-gke-datalake/image4.png)
-   ![image.png](gcp-gke-datalake/image5.png)
-
 ### BigQuery와 Zeppelin 활용
 
 - 모든 활동 로그와 사용자의 데이터를 BigQuery로 집중시킵니다.
 - Zeppelin을 이용해 BigQuery 데이터를 시각화하고, 필요에 따라 데이터 기반 분석을 수행합니다.
-- ![image.png](gcp-gke-datalake/image6.png)
-- ![image.png](gcp-gke-datalake/image7.png)
 
 ### K8S Zeppelin 설정 예시
 

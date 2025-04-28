@@ -8,7 +8,6 @@ Datastore의 데이터를 일 단위로 BigQuery에 적재하여 지표 데이�
 
 이 작업은 Datastore의 데이터가 매일 GCS에 Export된 다음, BigQuery에 Import되어 데이터레이크를 구축하는 과정입니다. 이를 통해 Dataflow를 이용해 데이터 흐름을 자동화하여 데이터 분석 및 리포팅에 필요한 기반을 마련합니다.
 
-![Datastore to BigQuery 과정](gcp-datastore-to-bigquery-dataflow/image2.png)
 
 ## 배경 지식
 
@@ -32,16 +31,12 @@ Google Cloud Platform(GCP)의 주요 데이터 서비스 간의 데이터 흐름
   - Datastore 데이터를 텍스트 형식으로 GCS에 Export하고, 이를 다시 BigQuery로 Import 하는 Dataflow 파이프라인을 설정합니다.
   - 이 파이프라인을 통해 작업이 매일 자동으로 실행됩니다.
 
-![Pipelines 스케줄링](gcp-datastore-to-bigquery-dataflow/image3.png)
-
 ### GCS 디렉토리 구조
 
 - **구조의 의미**: Datastore의 Kind 별로 GCS의 디렉토리가 구분되어 있습니다.
 - **구성 요소**:
   - `udf.js`: Dataflow에서 데이터를 처리하기 위해 필요한 사용자 정의 함수.
   - `schema.json`: BigQuery에 데이터를 Import하기 위한 스키마 정의.
-
-![GCS 디렉토리 구조](gcp-datastore-to-bigquery-dataflow/image1.png)
 
 ### Dataflow 파이프라인 일정
 
@@ -54,8 +49,6 @@ Google Cloud Platform(GCP)의 주요 데이터 서비스 간의 데이터 흐름
 
 - **파일 관리**:
   - Datastore Export 시, GCS 파일은 덮어쓰기되며 자동으로 파티셔닝됩니다.
-  
-![Data 관리 자동 파티셔닝](gcp-datastore-to-bigquery-dataflow/image.png)
 
 - **데이터 적재**:
   - BigQuery로의 데이터 적재는 Append 형태로 이루어지며, 쿼리 시 날짜별 조건을 넣어 조회할 수 있습니다.

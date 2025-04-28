@@ -27,7 +27,6 @@ tmpfs           975M     0  975M   0% /dev/shm
 ```
 
 uWSGI 로그 파일이 불필요하게 37.6G 가량 누적되어 있었으며, 로그 로테이션이 권한 문제로 정상적으로 이루어지지 않았습니다.
-![image.png](aws-ec2-instance-diskfull/image.png)
 
 ### 2. 로그 파일 제거
 
