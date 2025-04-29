@@ -51,7 +51,8 @@ export default defineConfig({
       {
         text: 'Blog',
         items: [
-          { text: '- AWS re:Invent 2023', link: '/blog/aws-reinvent-2023' }
+          { text: '- AWS re:Invent 2023', link: '/blog/aws-reinvent-2023' },
+          { text: '- AI와 함께 기술 글 쓰는 방식', link: '/blog/ai-writing-tech-blog' }
         ]
       }
     ],
