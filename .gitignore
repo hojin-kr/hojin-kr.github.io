@@ -1,2 +1,3 @@
 # gitignore for npm project
 node_modules
+.DS_Store
