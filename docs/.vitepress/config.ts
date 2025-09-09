@@ -36,7 +36,8 @@ export default defineConfig({
           {
             text: 'GCP',
             items: [
-              { text: 'K8S 운영 노드풀 조정', link: '/devops/gcp-gke-k8s-nodefull-change' }
+              { text: 'K8S 운영 노드풀 조정', link: '/devops/gcp-gke-k8s-nodefull-change' },
+              { text: 'Terraform & K8S', link: '/devops/iac-terraform-k8s' }
             ]
           }
         ]
