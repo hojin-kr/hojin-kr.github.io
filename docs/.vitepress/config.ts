@@ -24,6 +24,7 @@ export default defineConfig({
           { text: '- AWS CodePipeline 배포 구성', link: '/devops/aws-codepipeline-deploy-to-ec2'},
           { text: '- AWS EC2 디스크풀 이슈 확인 및 처리', link: '/devops/aws-ec2-instance-diskfull' },
           { text: '- AWS DynamoDB 설계 - 항목당 크기와 용량 사용량의 최적화', link: '/devops/aws-dynamodb-wcapaticy-adjust' },
+          { text: '- AWS RDS 업그레이드 제로 다운타임 연구', link: '/devops/awa-rds-upgrade-zerodowntime' },
           { text: '- GCP K8S 운영 노드풀 조정 실행 계획', link: '/devops/gcp-gke-k8s-nodefull-change' },
           { text: '- AWS EC2 기반의 서비스 아키텍처 운영에 대한 생각', link: '/devops/aws-ec2-architecture-operation-thought' },
         ]
