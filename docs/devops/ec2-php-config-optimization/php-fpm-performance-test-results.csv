@@ -1,0 +1,5 @@
+Name,CPU Usage,Memory Usage,Active Processes,Idle Processes,Start Servers,Max Children,Notes
+Original State,10%,24%,180,150,60,160,
+Adjustment 1st,11%,17%,150,100,60,150,"Since the configuration was still large compared to actual usage, there was likely no change in active processes, and fewer idle processes were created, reducing only memory usage."
+Adjustment 2nd,11%,7%,50,30,10,50,"Similar to adjustment 1st, active processes remained unchanged with same CPU usage, but idle processes decreased, reducing memory usage."
+Adjustment 3rd,12%,5%,30,5,5,30,"Maintaining 10 idle processes, CPU usage same, slight memory decrease with no issues"

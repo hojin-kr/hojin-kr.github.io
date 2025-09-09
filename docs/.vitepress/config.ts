@@ -26,7 +26,8 @@ export default defineConfig({
           { text: 'AWS DynamoDB 설계 - 항목당 크기와 용량 사용량의 최적화', link: '/devops/aws-dynamodb-wcapaticy-adjust' },
           { text: 'AWS RDS 업그레이드 제로 다운타임 연구', link: '/devops/awa-rds-upgrade-zerodowntime' },
           { text: 'GCP K8S 운영 노드풀 조정 실행 계획', link: '/devops/gcp-gke-k8s-nodefull-change' },
-          { text: 'AWS EC2 기반의 서비스 아키텍처 운영에 대한 생각', link: '/devops/aws-ec2-architecture-operation-thought' }
+          { text: 'AWS EC2 기반의 서비스 아키텍처 운영에 대한 생각', link: '/devops/aws-ec2-architecture-operation-thought' },
+          { text: 'PHP 설정 변경을 통한 EC2 인스턴스 타입 최적화', link: '/devops/ec2-php-config-optimization' }
         ]
       },
       {
